@@ -1,0 +1,73 @@
+git bash cheat sheet
+ 
+ /* TODO add username and password stuff 
+ */
+ /*to open git bash terminal in your project folder by opening 
+  *up the project folder then right clicking and choosing 
+  *git bash here
+  */
+ 
+ /* for all of these commands that have "<somewordhere>" 
+  *you do not type the symbols
+  */
+  
+  //to copy the repository that is already created 
+  git clone <linktorepository>
+ 
+ /* start a brand new git repository navigate to
+  * where your project is and use the following command
+  */
+  
+ git init
+ 
+ /*add a remote to the repository */
+ git remote add origin <link>
+ 
+ /*download any changes from others*/
+ git fetch
+ 
+ /*update your current version and merge changes */
+ git pull
+ 
+/*pull origin and start a branch */
+ git pull <remotename> <branchnameyouwant>
+ 
+ /*push a branch to remote */
+ git push <remote name> <branch name>
+ 
+ /* create a new brach with the name you give*/
+ git checkout -b <nameofnewbrach>
+ 
+/* add all changes to be committed */
+ git add .
+ 
+ /*commit all of the changes made with git add . */
+ git commit -m <"commit message in quotes">
+ 
+/*merge two branches*/
+ git merge <Branch to update> <branch with changes>
+ 
+/*
+ * Merge conflict markers show the changes that may conflict. The changes
+ * may not be a conflict but may both need to be left in. Delete what you do not
+ * need including the symbols. Then use add and commit to complete the merge
+ * There will be some merge message that already makes comments about the commit.
+ * 
+ * The first section between the left arrows and equal signs shows what it used to look like
+ * and the second section shows what the branch being merged looks like.
+ */
+<<<<<<< "branch being merged to typically HEAD"
+//Shows how code used to be. Delete it if not needed.
+=======
+//Shows your proposed code changes. Delete it if not needed.
+>>>>>>> "Branch name of the updated branch" 
+ 
+/*revert a commit on remote*/
+ git checkout master
+ git reset --hard <commit number>
+ git push --force origin master
+
+
+/* change your text editor */
+$ git config --global core.editor "Notepad"
+
