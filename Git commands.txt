@@ -70,4 +70,3 @@ git bash cheat sheet
 
 /* change your text editor */
 $ git config --global core.editor "Notepad"
-
