@@ -67,6 +67,9 @@ git bash cheat sheet
  git reset --hard <commit number>
  git push --force origin master
 
+/*add global username and email*/
+$ git config --global user.name "John Doe"
+$ git config --global user.email johndoe@example.com
 
 /* change your text editor */
 $ git config --global core.editor "Notepad"
