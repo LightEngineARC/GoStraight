@@ -23,6 +23,10 @@ git bash cheat sheet
  /*add a remote to the repository */
  git remote add origin <link>
  
+ /*track remote branch with another branch*/
+ git branch --set-upstream <yourbranch> <remotebranch>
+
+ 
  /*download any changes from others*/
  git fetch
  
@@ -73,6 +77,5 @@ $ git config --global user.email johndoe@example.com
 
 /* change your text editor */
 $ git config --global core.editor "Notepad"
-
 
 
