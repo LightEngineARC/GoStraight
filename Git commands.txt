@@ -78,4 +78,3 @@ $ git config --global user.email johndoe@example.com
 /* change your text editor */
 $ git config --global core.editor "Notepad"
 
-
