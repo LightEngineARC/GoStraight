@@ -10,6 +10,7 @@ namespace GoStraight
     {
         static void Main(string[] args)
         {
+            Board.Outline();
         }
     }
 }
