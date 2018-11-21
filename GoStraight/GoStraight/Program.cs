@@ -19,6 +19,7 @@ namespace GoStraight
         {
             InitGame();
             Console.CursorVisible = false;
+
             ConsoleKeyInfo keyInfo;
             while ((keyInfo = Console.ReadKey(true)).Key != ConsoleKey.Escape)
             {
