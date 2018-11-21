@@ -8,5 +8,10 @@ namespace GoStraight
 {
     class Board
     {
+        public bool SpaceIsBlocked(Coordinate c)
+        {
+            //TODO given coordinate determine if space can't be traversed by player
+            return false;
+        }
     }
 }

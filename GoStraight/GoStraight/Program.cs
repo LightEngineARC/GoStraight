@@ -8,15 +8,17 @@ namespace GoStraight
 {
     class Program
     {
+        
         const ConsoleColor PLAYERCOLOR = ConsoleColor.DarkBlue;
         const ConsoleColor BACKGROUND_COLOR = ConsoleColor.Green;
+        
 
         public static Coordinate Player { get; set; } //Will represent our player that's moving around :P/>
 
         static void Main(string[] args)
         {
             InitGame();
-
+            Console.CursorVisible = false;
             ConsoleKeyInfo keyInfo;
             while ((keyInfo = Console.ReadKey(true)).Key != ConsoleKey.Escape)
             {
@@ -58,7 +60,9 @@ namespace GoStraight
 
                 Console.BackgroundColor = PLAYERCOLOR;
                 Console.SetCursorPosition(newPlayer.X, newPlayer.Y);
-                Console.Write(" ");
+                Console.OutputEncoding = Encoding.Default;
+                Console.Write('웃');
+                Console.OutputEncoding = Encoding.Default;
 
                 Player = newPlayer;
             }
@@ -87,6 +91,10 @@ namespace GoStraight
                 return false;
 
             //TODO check map for the walls or blocks that can not be crossed.
+            /*
+             * if(Board.SpaceIsBlocked(c))
+             * return false;
+            */
 
             return true;
         }
