@@ -10,22 +10,30 @@ namespace TestMaze
 
     class Maze
     {
-        public enum direction { up, down, left, right};
+        public enum direction { up, down, left, right };
 
-		bool[,] isWalls =
+        bool[,] isWalls =
         {
-		    {false, false, false, false },
-		    {true, false, true, false },
-		    {false, false, false, true },
-		    {false, true, false, false }
-	    };
+            {false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false},
+            {false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false},
+            {false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false},
+            {false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false},
+            {false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false},
+            {false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false},
+            {false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false},
+            {false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false},
+            {false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false},
+            {false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false},
+            {false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false},
+            {false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false}
+        };
         int[] playerPosition = { 0, 0 };
         public void PrintMaze()
         {
             Console.SetCursorPosition(0, 0);
 
             Console.BackgroundColor = ConsoleColor.Blue;
-            for (int i = 0; i <= isWalls.GetLength(0) + 1; i++)  //print top outer wall
+            for (int i = 0; i <= isWalls.GetLength(1) + 1; i++)  //print top outer wall
             {
                 Console.Write(" ");
             }
@@ -45,7 +53,7 @@ namespace TestMaze
                 Console.WriteLine();
             }
             Console.BackgroundColor = ConsoleColor.Blue;
-            for (int i = 0; i <= isWalls.GetLength(0) + 1; i++)  //print bottom outer wall
+            for (int i = 0; i <= isWalls.GetLength(1) + 1; i++)  //print bottom outer wall
             {
                 Console.Write(" ");
             }

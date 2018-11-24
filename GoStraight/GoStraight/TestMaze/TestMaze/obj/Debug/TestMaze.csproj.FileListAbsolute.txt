@@ -5,3 +5,10 @@ C:\Users\Matthew\Documents\School\CSIS2410CSharp\Final Project\TestMaze\TestMaze
 C:\Users\Matthew\Documents\School\CSIS2410CSharp\Final Project\TestMaze\TestMaze\TestMaze\obj\Debug\TestMaze.csproj.CoreCompileInputs.cache
 C:\Users\Matthew\Documents\School\CSIS2410CSharp\Final Project\TestMaze\TestMaze\TestMaze\obj\Debug\TestMaze.exe
 C:\Users\Matthew\Documents\School\CSIS2410CSharp\Final Project\TestMaze\TestMaze\TestMaze\obj\Debug\TestMaze.pdb
+C:\Users\Jae Moon\source\repos\2410\GoStraight\GoStraight\GoStraight\TestMaze\TestMaze\bin\Debug\TestMaze.exe.config
+C:\Users\Jae Moon\source\repos\2410\GoStraight\GoStraight\GoStraight\TestMaze\TestMaze\bin\Debug\TestMaze.exe
+C:\Users\Jae Moon\source\repos\2410\GoStraight\GoStraight\GoStraight\TestMaze\TestMaze\bin\Debug\TestMaze.pdb
+C:\Users\Jae Moon\source\repos\2410\GoStraight\GoStraight\GoStraight\TestMaze\TestMaze\obj\Debug\TestMaze.csprojAssemblyReference.cache
+C:\Users\Jae Moon\source\repos\2410\GoStraight\GoStraight\GoStraight\TestMaze\TestMaze\obj\Debug\TestMaze.csproj.CoreCompileInputs.cache
+C:\Users\Jae Moon\source\repos\2410\GoStraight\GoStraight\GoStraight\TestMaze\TestMaze\obj\Debug\TestMaze.exe
+C:\Users\Jae Moon\source\repos\2410\GoStraight\GoStraight\GoStraight\TestMaze\TestMaze\obj\Debug\TestMaze.pdb
