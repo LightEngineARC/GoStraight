@@ -10,35 +10,39 @@ namespace GoStraight
     {
         
         const ConsoleColor PLAYERCOLOR = ConsoleColor.DarkBlue;
-        const ConsoleColor BACKGROUND_COLOR = ConsoleColor.Green;
-        
+        //const ConsoleColor BACKGROUND_COLOR = ConsoleColor.Green;
 
-        public static Coordinate Player { get; set; } //Will represent our player that's moving around :P/>
+        public static Coordinate PlayerSpace { get; set; } //Will represent our player that's moving around
 
         static void Main(string[] args)
         {
-            InitGame();
+            
+            Board ACTIVE_BOARD = new Board("StartBoard");
+            InitGame(ACTIVE_BOARD);
             Console.CursorVisible = false;
+            // Console.WriteLine(ACTIVE_BOARD.GetCoordinate(0,0)); //shows if there is a wall at coordinate
 
             ConsoleKeyInfo keyInfo;
+            ACTIVE_BOARD.PrintBoard();
+            MovePlayer(0, 0, ACTIVE_BOARD);
             while ((keyInfo = Console.ReadKey(true)).Key != ConsoleKey.Escape)
             {
                 switch (keyInfo.Key)
                 {
                     case ConsoleKey.UpArrow:
-                        MovePlayer(0, -1);
+                        MovePlayer(0, -1,ACTIVE_BOARD);
                         break;
 
                     case ConsoleKey.RightArrow:
-                        MovePlayer(1, 0);
+                        MovePlayer(1, 0,ACTIVE_BOARD);
                         break;
 
                     case ConsoleKey.DownArrow:
-                        MovePlayer(0, 1);
+                        MovePlayer(0, 1,ACTIVE_BOARD);
                         break;
 
                     case ConsoleKey.LeftArrow:
-                        MovePlayer(-1, 0);
+                        MovePlayer(-1, 0,ACTIVE_BOARD);
                         break;
                 }
             }
@@ -47,35 +51,35 @@ namespace GoStraight
         /// <summary>
         /// Paint the new player
         /// </summary>
-        static void MovePlayer(int x, int y)
+        static void MovePlayer(int x, int y,Board active)
         {
             Coordinate newPlayer = new Coordinate()
             {
-                X = Player.X + x,
-                Y = Player.Y + y
+                X = PlayerSpace.X + x,
+                Y = PlayerSpace.Y + y
             };
 
-            if (CanMove(newPlayer))
+            if (CanMove(newPlayer, active))
             {
-                RemoveOldPlayer();
+                RemoveOldPlayer(active);
 
-                Console.BackgroundColor = PLAYERCOLOR;
+                //Console.BackgroundColor = PLAYERCOLOR;
                 Console.SetCursorPosition(newPlayer.X, newPlayer.Y);
                 Console.OutputEncoding = Encoding.Default;
-                Console.Write('웃');
+                Console.Write('X');
                 Console.OutputEncoding = Encoding.Default;
 
-                Player = newPlayer;
+                PlayerSpace = newPlayer;
             }
         }
 
         /// <summary>
         /// Overpaint the old player
         /// </summary>
-        static void RemoveOldPlayer()
+        static void RemoveOldPlayer(Board active)
         {
-            Console.BackgroundColor = BACKGROUND_COLOR;
-            Console.SetCursorPosition(Player.X, Player.Y);
+            Console.BackgroundColor = active.GetPathColor();
+            Console.SetCursorPosition(PlayerSpace.X, PlayerSpace.Y);
             Console.Write(" ");
         }
 
@@ -83,19 +87,19 @@ namespace GoStraight
         /// Make sure that the new coordinate is not placed outside the
         /// console window (since that will cause a runtime crash
         /// </summary>
-        static bool CanMove(Coordinate c)
+        static bool CanMove(Coordinate c, Board active)
         {
-            if (c.X < 0 || c.X >= Console.WindowWidth)
+            if (c.X < 21 || c.X >= Console.WindowWidth-20)
                 return false;
 
-            if (c.Y < 0 || c.Y >= Console.WindowHeight)
+            if (c.Y < 6 || c.Y >= Console.WindowHeight)
                 return false;
 
             //TODO check map for the walls or blocks that can not be crossed.
-            /*
-             * if(Board.SpaceIsBlocked(c))
-             * return false;
-            */
+            if (active.GetCoordinate(c.X-21,c.Y-6))//coordinates inside the allowed maze block
+            {
+                return false;
+            }
 
             return true;
         }
@@ -107,9 +111,9 @@ namespace GoStraight
         /// It is very important that you run the Clear() method after
         /// changing the background color since this causes a repaint of the background
         /// </remarks>
-        static void SetBackgroundColor()
+        static void SetBackgroundColor(Board active)
         {
-            Console.BackgroundColor = BACKGROUND_COLOR;
+            Console.BackgroundColor = active.GetPathColor();
             Console.Clear(); //Important!
         }
 
@@ -117,17 +121,17 @@ namespace GoStraight
         /// Initiates the game by painting the background
         /// and initiating the player
         /// </summary>
-        static void InitGame()
+        static void InitGame(Board active)
         {
-            SetBackgroundColor();
+            SetBackgroundColor(active);
 
-            Player = new Coordinate()
+            PlayerSpace = new Coordinate()
             {
-                X = 0,
-                Y = 0
+                X = 22,
+                Y = 7
             };
 
-            MovePlayer(0, 0);
+            MovePlayer(0, 0,active);
 
         }
     }
@@ -140,4 +144,7 @@ namespace GoStraight
         public int X { get; set; } //Left
         public int Y { get; set; } //Top
     }
+    //TODO add the game display 20 for first section, 25 for second section, 20 for inventory section
+    //TODO 12 high for maze, about 5 high for message section
+    //TODO print each area by controlling the background color and the foreground color then printing the maze
 }
