@@ -113,6 +113,7 @@ namespace GoStraight
         /// </summary>
         public void PrintBoard()
         {
+            Outline();PlayerInfo();GameFunction();
             for(int i = 0; i< 25;i++)
             {
                 for(int j = 0; j<25;  j++)
