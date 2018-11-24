@@ -38,7 +38,7 @@ namespace GoStraight
             Console.WriteLine("Item slots");
             Console.SetCursorPosition(60, 9);
             Console.WriteLine("Puzzle Keys");
-
+        }
         private ConsoleColor PathColor;
         private ConsoleColor WallColor;
         private bool[,] board = new bool[25,25];

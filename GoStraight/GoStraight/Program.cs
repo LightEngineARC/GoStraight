@@ -47,6 +47,7 @@ namespace GoStraight
                         break;
                 }
             }
+            //TODO add end game stuff here.
 
         }
 

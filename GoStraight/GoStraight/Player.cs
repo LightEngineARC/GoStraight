@@ -12,11 +12,7 @@ namespace GoStraight
     }
     class Player
     {
-<<<<<<< HEAD
-
-=======
         //IList<PuzzleKey> PuzzleKeyList = new List<PuzzleKey>();
         string[] PlayerImages = new string[6];
->>>>>>> ConsoleBlocks
     }
 }
