@@ -29,9 +29,13 @@ namespace GoStraight
         {
             Console.SetCursorPosition(60, 5);
             Console.WriteLine("Player's info");
+            Console.SetCursorPosition(60, 6);
             Console.WriteLine("Statics");
+            Console.SetCursorPosition(60, 7);
             Console.WriteLine("Inventory");
+            Console.SetCursorPosition(60, 8);
             Console.WriteLine("Item slots");
+            Console.SetCursorPosition(60, 9);
             Console.WriteLine("Puzzle Keys");
         }
     }
