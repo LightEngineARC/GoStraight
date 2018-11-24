@@ -1,7 +1,12 @@
 git bash cheat sheet
  
- /* TODO add username and password stuff 
- */
+ /*add global username and email*/
+$ git config --global user.name "John Doe"
+$ git config --global user.email johndoe@example.com
+
+/* change your text editor */
+$ git config --global core.editor "Notepad" 
+ 
  /*to open git bash terminal in your project folder by opening 
   *up the project folder then right clicking and choosing 
   *git bash here
@@ -22,6 +27,10 @@ git bash cheat sheet
  
  /*add a remote to the repository */
  git remote add origin <link>
+ 
+ /*after creating new branch locally push it to remote*/
+ $ git push --set-upstream origin <NameOfBranch>
+
  
  /*track remote branch with another branch*/
  git branch --set-upstream <yourbranch> <remotebranch>
@@ -51,6 +60,8 @@ git bash cheat sheet
 /*merge two branches*/
  git merge <Branch to update> <branch with changes>
  
+ 
+ 
 /*
  * Merge conflict markers show the changes that may conflict. The changes
  * may not be a conflict but may both need to be left in. Delete what you do not
@@ -66,15 +77,12 @@ git bash cheat sheet
 //Shows your proposed code changes. Delete it if not needed.
 >>>>>>> "Branch name of the updated branch" 
  
+ 
+ 
+ 
 /*revert a commit on remote*/
  git checkout master
  git reset --hard <commit number>
  git push --force origin master
 
-/*add global username and email*/
-$ git config --global user.name "John Doe"
-$ git config --global user.email johndoe@example.com
-
-/* change your text editor */
-$ git config --global core.editor "Notepad"
 

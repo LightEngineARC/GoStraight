@@ -12,3 +12,10 @@ C:\Users\Jae Moon\source\repos\2410\GoStraight\GoStraight\GoStraight\TestMaze\Te
 C:\Users\Jae Moon\source\repos\2410\GoStraight\GoStraight\GoStraight\TestMaze\TestMaze\obj\Debug\TestMaze.csproj.CoreCompileInputs.cache
 C:\Users\Jae Moon\source\repos\2410\GoStraight\GoStraight\GoStraight\TestMaze\TestMaze\obj\Debug\TestMaze.exe
 C:\Users\Jae Moon\source\repos\2410\GoStraight\GoStraight\GoStraight\TestMaze\TestMaze\obj\Debug\TestMaze.pdb
+C:\Users\iamsp\source\repos\GoStraight\GoStraight\GoStraight\TestMaze\TestMaze\bin\Debug\TestMaze.exe.config
+C:\Users\iamsp\source\repos\GoStraight\GoStraight\GoStraight\TestMaze\TestMaze\bin\Debug\TestMaze.exe
+C:\Users\iamsp\source\repos\GoStraight\GoStraight\GoStraight\TestMaze\TestMaze\bin\Debug\TestMaze.pdb
+C:\Users\iamsp\source\repos\GoStraight\GoStraight\GoStraight\TestMaze\TestMaze\obj\Debug\TestMaze.csprojAssemblyReference.cache
+C:\Users\iamsp\source\repos\GoStraight\GoStraight\GoStraight\TestMaze\TestMaze\obj\Debug\TestMaze.csproj.CoreCompileInputs.cache
+C:\Users\iamsp\source\repos\GoStraight\GoStraight\GoStraight\TestMaze\TestMaze\obj\Debug\TestMaze.exe
+C:\Users\iamsp\source\repos\GoStraight\GoStraight\GoStraight\TestMaze\TestMaze\obj\Debug\TestMaze.pdb
