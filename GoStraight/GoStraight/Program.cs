@@ -16,9 +16,7 @@ namespace GoStraight
 
         static void Main(string[] args)
         {
-
-            
-            Board ACTIVE_BOARD = new Board("MyMaze");
+            Board ACTIVE_BOARD = new Board("KMaze");
             InitGame(ACTIVE_BOARD);
             Console.CursorVisible = false;
             // Console.WriteLine(ACTIVE_BOARD.GetCoordinate(0,0)); //shows if there is a wall at coordinate
@@ -54,6 +52,7 @@ namespace GoStraight
         /// <summary>
         /// Paint the new player
         /// </summary>
+        /// <author>Ashton</author>
         static void MovePlayer(int x, int y,Board active)
         {
             Coordinate newPlayer = new Coordinate()
@@ -79,6 +78,7 @@ namespace GoStraight
         /// <summary>
         /// Overpaint the old player
         /// </summary>
+        /// <author>Ashton</author>
         static void RemoveOldPlayer(Board active)
         {
             Console.BackgroundColor = active.GetPathColor();
@@ -90,6 +90,7 @@ namespace GoStraight
         /// Make sure that the new coordinate is not placed outside the
         /// console window (since that will cause a runtime crash
         /// </summary>
+        /// <author>Ashton</author>
         static bool CanMove(Coordinate c, Board active)
         {
             if (c.X < 21 || c.X >= Console.WindowWidth-20)
@@ -110,20 +111,18 @@ namespace GoStraight
         /// <summary>
         /// Paint a background color
         /// </summary>
-        /// <remarks>
-        /// It is very important that you run the Clear() method after
-        /// changing the background color since this causes a repaint of the background
-        /// </remarks>
+        /// <author>Ashton</author>
         static void SetBackgroundColor(Board active)
         {
             Console.BackgroundColor = active.GetPathColor();
-            Console.Clear(); //Important!
+            Console.Clear();
         }
 
         /// <summary>
         /// Initiates the game by painting the background
         /// and initiating the player
         /// </summary>
+        /// <author>Ashton</author>
         static void InitGame(Board active)
         {
             SetBackgroundColor(active);
@@ -142,12 +141,12 @@ namespace GoStraight
     /// <summary>
     /// Represents a map coordinate
     /// </summary>
+    /// <author>Ashton</author>
     class Coordinate
     {
         public int X { get; set; } //Left
         public int Y { get; set; } //Top
     }
-    //TODO add the game display 20 for first section, 25 for second section, 20 for inventory section
     //TODO 12 high for maze, about 5 high for message section
     //TODO print each area by controlling the background color and the foreground color then printing the maze
 }

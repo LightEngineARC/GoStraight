@@ -9,14 +9,14 @@ namespace GoStraight
 {
     public class Board
     {
-        public static void Outline()
+        public static void Outline()//Jae and Matthew
         {
             Console.SetCursorPosition(20, 0);
             Console.WriteLine("BackPacking Adventure");
             GameFunction();
             PlayerInfo();
         }
-        private static void GameFunction()
+        private static void GameFunction()//Jae and Mathew
         {
             Console.SetCursorPosition(0, 5);
             Console.WriteLine("Save");
@@ -26,7 +26,7 @@ namespace GoStraight
             Console.SetCursorPosition(0, 15);
 
         }
-        private static void PlayerInfo()
+        private static void PlayerInfo()//Jay and Matthew
         {
             Console.SetCursorPosition(60, 5);
             Console.WriteLine("Player's info");
@@ -39,13 +39,16 @@ namespace GoStraight
             Console.SetCursorPosition(60, 9);
             Console.WriteLine("Puzzle Keys");
         }
+        
+
         private ConsoleColor PathColor;
         private ConsoleColor WallColor;
-        private bool[,] board = new bool[25,25];
+        private bool[,] board = new bool[25,25];//Matthew
 
         /// <summary>
         /// Constructor builds board from filename
         /// </summary>
+        /// <author>Ashton</author>
         /// <param name="FILEPATH">String of the file name of the Board</param>
         public Board(string FILEPATH)
         {
@@ -93,6 +96,7 @@ namespace GoStraight
         /// </summary>
         /// <param name="row"></param>
         /// <param name="column"></param>
+        /// <author>Ashton</author>
         /// <returns></returns>
         public bool GetCoordinate(int row, int column)
         {
