@@ -18,7 +18,7 @@ namespace GoStraight
         {
 
             
-            Board ACTIVE_BOARD = new Board("StartBoard");
+            Board ACTIVE_BOARD = new Board("MyMaze");
             InitGame(ACTIVE_BOARD);
             Console.CursorVisible = false;
             // Console.WriteLine(ACTIVE_BOARD.GetCoordinate(0,0)); //shows if there is a wall at coordinate

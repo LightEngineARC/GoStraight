@@ -68,7 +68,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="resources\StartBoard.txt">
+    <Content Include="MyMaze.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="StartBoard.txt">
