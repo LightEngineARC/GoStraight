@@ -22,7 +22,7 @@ namespace GoStraight
             // Console.WriteLine(ACTIVE_BOARD.GetCoordinate(0,0)); //shows if there is a wall at coordinate
 
             ConsoleKeyInfo keyInfo;
-            ACTIVE_BOARD.PrintBoard();
+            ACTIVE_BOARD.InverseBoard();
             MovePlayer(0, 0, ACTIVE_BOARD);
             while ((keyInfo = Console.ReadKey(true)).Key != ConsoleKey.Escape)
             {
