@@ -9,9 +9,7 @@ namespace GoStraight
     class Puzzle
     {
         private ConsoleColor PuzzleBlock { get; }
-        //TODO puzle key to solve
-        //TODO interact options 
-        
-
+        //TODO puzzletype
+        //TODO interact options
     }
 }

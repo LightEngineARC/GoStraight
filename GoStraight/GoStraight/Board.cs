@@ -11,7 +11,7 @@ namespace GoStraight
     {
         public static void Outline()//Jae and Matthew
         {
-            Console.SetCursorPosition(20, 0);
+            Console.SetCursorPosition(35, 3);
             Console.WriteLine("BackPacking Adventure");
             GameFunction();
             PlayerInfo();
@@ -19,31 +19,31 @@ namespace GoStraight
         private static void GameFunction()//Jae and Mathew
         {
             Console.SetCursorPosition(0, 5);
-            Console.WriteLine("Save");
-            Console.WriteLine("Quit");
-            Console.WriteLine("Menu");
-            Console.WriteLine("Controlls"); // maybe we can put some background sounds and make it stop with this
+            Console.WriteLine("     Save");
+            Console.WriteLine("     Quit");
+            Console.WriteLine("     Menu");
+            Console.WriteLine("     Controlls"); // maybe we can put some background sounds and make it stop with this
             Console.SetCursorPosition(0, 15);
 
         }
         private static void PlayerInfo()//Jay and Matthew
         {
-            Console.SetCursorPosition(60, 5);
+            Console.SetCursorPosition(75, 5);
             Console.WriteLine("Player's info");
-            Console.SetCursorPosition(60, 6);
+            Console.SetCursorPosition(75, 6);
             Console.WriteLine("Statics");
-            Console.SetCursorPosition(60, 7);
+            Console.SetCursorPosition(75, 7);
             Console.WriteLine("Inventory");
-            Console.SetCursorPosition(60, 8);
+            Console.SetCursorPosition(75, 8);
             Console.WriteLine("Item slots");
-            Console.SetCursorPosition(60, 9);
+            Console.SetCursorPosition(75, 9);
             Console.WriteLine("Puzzle Keys");
         }
         
 
         private ConsoleColor PathColor;
         private ConsoleColor WallColor;
-        private bool[,] board = new bool[25,25];//Matthew
+        private bool[,] board = new bool[50,25];//Matthew
 
         /// <summary>
         /// Constructor builds board from filename
@@ -70,7 +70,7 @@ namespace GoStraight
                     //set the maze array to the rest of the lines.
                     line = sr.ReadToEnd();
                     int i = 0, j = 0;
-                    bool[,] result = new bool[25, 25];
+                    bool[,] result = new bool[50, 25];
                     foreach (var row in line.Split('\n'))
                     {
                         j = 0;
@@ -118,7 +118,7 @@ namespace GoStraight
         public void PrintBoard()
         {
             Outline();PlayerInfo();GameFunction();
-            for(int i = 0; i< 25;i++)
+            for(int i = 0; i< 50;i++)
             {
                 for(int j = 0; j<25;  j++)
                 {
@@ -143,7 +143,7 @@ namespace GoStraight
         {
            for(int i = 0; i< 25; i++)
             {
-                for(int j = 0; j < 25; j++)
+                for(int j = 0; j < 50; j++)
                 {
                     board[j, i] = !board[j, i];
                 }

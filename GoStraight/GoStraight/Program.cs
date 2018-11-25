@@ -16,13 +16,13 @@ namespace GoStraight
 
         static void Main(string[] args)
         {
-            Board ACTIVE_BOARD = new Board("KMaze");
+            Board ACTIVE_BOARD = new Board("StartBoard");
             InitGame(ACTIVE_BOARD);
             Console.CursorVisible = false;
             // Console.WriteLine(ACTIVE_BOARD.GetCoordinate(0,0)); //shows if there is a wall at coordinate
 
             ConsoleKeyInfo keyInfo;
-            ACTIVE_BOARD.InverseBoard();
+            ACTIVE_BOARD.PrintBoard();
             MovePlayer(0, 0, ACTIVE_BOARD);
             while ((keyInfo = Console.ReadKey(true)).Key != ConsoleKey.Escape)
             {
@@ -93,7 +93,7 @@ namespace GoStraight
         /// <author>Ashton</author>
         static bool CanMove(Coordinate c, Board active)
         {
-            if (c.X < 21 || c.X >= Console.WindowWidth-20)
+            if (c.X < 21 || c.X >= Console.WindowWidth-10)
                 return false;
 
             if (c.Y < 6 || c.Y >= Console.WindowHeight)
