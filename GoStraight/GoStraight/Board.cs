@@ -84,7 +84,7 @@ namespace GoStraight
             {   // Open the text file using a stream reader.
                 using (StreamReader sr = new StreamReader(FILEPATH+".txt"))
                 {
-                    //TODO get height and width of the map.
+                    //get height and width of the map.
                     String line = sr.ReadLine();
                     Width = int.Parse(line.Trim());
                     line = sr.ReadLine();
