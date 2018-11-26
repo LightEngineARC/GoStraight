@@ -9,7 +9,7 @@ namespace GoStraight
     class Program
     {
         
-        const ConsoleColor PLAYERCOLOR = ConsoleColor.DarkBlue;
+        //const ConsoleColor PLAYERCOLOR = ConsoleColor.DarkBlue;
         //const ConsoleColor BACKGROUND_COLOR = ConsoleColor.Green;
 
         public static Coordinate PlayerSpace { get; set; } //Will represent our player that's moving around
@@ -23,7 +23,7 @@ namespace GoStraight
 
             ConsoleKeyInfo keyInfo;
             ACTIVE_BOARD.PrintBoard();
-            MovePlayer(0, 0, ACTIVE_BOARD);
+            MovePlayer(23, 10, ACTIVE_BOARD);
             while ((keyInfo = Console.ReadKey(true)).Key != ConsoleKey.Escape)
             {
                 switch (keyInfo.Key)
@@ -147,6 +147,6 @@ namespace GoStraight
         public int X { get; set; } //Left
         public int Y { get; set; } //Top
     }
-    //TODO 12 high for maze, about 5 high for message section
+    //TODO define maze layout sizes. use the areas to display text
     //TODO print each area by controlling the background color and the foreground color then printing the maze
 }

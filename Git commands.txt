@@ -1,7 +1,7 @@
 git bash cheat sheet
  
- /* TODO add username and password stuff 
- */
+ /* TODO add username and password stuff */
+
  /*to open git bash terminal in your project folder by opening 
   *up the project folder then right clicking and choosing 
   *git bash here
@@ -20,35 +20,36 @@ git bash cheat sheet
   
  git init
  
- /*add a remote to the repository */
+/*add a remote to the repository */
  git remote add origin <link>
  
- /*track remote branch with another branch*/
+/*track remote branch with another branch*/
  git branch --set-upstream <yourbranch> <remotebranch>
 
  
- /*download any changes from others*/
+/*download any changes from others*/
  git fetch
  
- /*update your current version and merge changes */
+/*update your current version and merge changes */
  git pull
  
 /*pull origin and start a branch */
  git pull <remotename> <branchnameyouwant>
  
- /*push a branch to remote */
+/*push a branch to remote */
  git push <remote name> <branch name>
  
- /* create a new brach with the name you give*/
+/* create a new brach with the name you give*/
  git checkout -b <nameofnewbrach>
  
 /* add all changes to be committed */
  git add .
  
- /*commit all of the changes made with git add . */
+/*commit all of the changes made with git add . */
  git commit -m <"commit message in quotes">
  
 /*merge two branches*/
+ git checkout <Branch to update>
  git merge <Branch to update> <branch with changes>
  
 /*

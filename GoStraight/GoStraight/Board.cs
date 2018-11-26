@@ -11,32 +11,56 @@ namespace GoStraight
     {
         public static void Outline()//Jae and Matthew
         {
-            Console.SetCursorPosition(35, 3);
-            Console.WriteLine("BackPacking Adventure");
+            //TODO set background for this position top 0 bottom 4 left 0 right (95?)
+            Console.SetCursorPosition(21, 0);
+            Console.BackgroundColor = ConsoleColor.DarkCyan;
+            for (int i = 0; i < 4; i++)
+            {
+                Console.SetCursorPosition(0, i);
+                Console.WriteLine("                                                                                            ");
+            }
+            Console.SetCursorPosition(35, 1);
+            Console.WriteLine("Backpack Adventure");
+            Console.SetCursorPosition(25, 2);
+            Console.WriteLine("A game by Ashton, Jae, Khayman, and Matthew");
             GameFunction();
             PlayerInfo();
         }
+
         private static void GameFunction()//Jae and Mathew
         {
+            //TODO create unchanging background for this section top 5 bottom 55 left 20
+            Console.SetCursorPosition(0, 5);
+            Console.BackgroundColor = ConsoleColor.DarkCyan;
+            for(int i= 0; i < 25; i++)
+            {
+                Console.WriteLine("                    ");
+            }
             Console.SetCursorPosition(0, 5);
             Console.WriteLine("     Save");
             Console.WriteLine("     Quit");
             Console.WriteLine("     Menu");
-            Console.WriteLine("     Controlls"); // maybe we can put some background sounds and make it stop with this
+            Console.WriteLine("     Controls"); // maybe we can put some background sounds and make it stop with this
             Console.SetCursorPosition(0, 15);
-
         }
+
         private static void PlayerInfo()//Jay and Matthew
         {
-            Console.SetCursorPosition(75, 5);
+            //TODO create unchanging background for this section. top 5, left (72?) right +20
+            for (int i = 0; i < 25; i++)
+            {
+                Console.SetCursorPosition(72, 5+i);
+                Console.WriteLine("                    ");
+            }
+            Console.SetCursorPosition(74, 5);
             Console.WriteLine("Player's info");
-            Console.SetCursorPosition(75, 6);
+            Console.SetCursorPosition(74, 6);
             Console.WriteLine("Statics");
-            Console.SetCursorPosition(75, 7);
+            Console.SetCursorPosition(74, 7);
             Console.WriteLine("Inventory");
-            Console.SetCursorPosition(75, 8);
+            Console.SetCursorPosition(74, 8);
             Console.WriteLine("Item slots");
-            Console.SetCursorPosition(75, 9);
+            Console.SetCursorPosition(74, 9);
             Console.WriteLine("Puzzle Keys");
         }
         
@@ -123,7 +147,7 @@ namespace GoStraight
                 for(int j = 0; j<25;  j++)
                 {
                     // print " " if wall or path
-                    Console.SetCursorPosition(21+i,6+j);
+                    Console.SetCursorPosition(21+i,5+j);
                     if(board[i, j])//if wall use WallColor
                     {
                         Console.BackgroundColor = WallColor;
