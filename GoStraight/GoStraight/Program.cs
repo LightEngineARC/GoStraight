@@ -100,7 +100,7 @@ namespace GoStraight
                 return false;
 
             //TODO check map for the walls or blocks that can not be crossed.
-            if (active.GetCoordinate(c.X-21,c.Y-6))//coordinates inside the allowed maze block
+            if (active.GetCoordinate(c.X-21,c.Y-5))//coordinates inside the allowed maze block
             {
                 return false;
             }
@@ -129,7 +129,7 @@ namespace GoStraight
 
             PlayerSpace = new Coordinate()
             {
-                X = 22,
+                X = 23,
                 Y = 7
             };
 
