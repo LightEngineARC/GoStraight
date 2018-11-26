@@ -93,10 +93,10 @@ namespace GoStraight
         /// <author>Ashton</author>
         static bool CanMove(Coordinate c, Board active)
         {
-            if (c.X < 21 || c.X >= Console.WindowWidth-10)
+            if (c.X < 21 || c.X >= Console.WindowWidth-21)
                 return false;
 
-            if (c.Y < 6 || c.Y >= Console.WindowHeight)
+            if (c.Y < 5 || c.Y >= Console.WindowHeight)
                 return false;
 
             //TODO check map for the walls or blocks that can not be crossed.
@@ -130,7 +130,7 @@ namespace GoStraight
             PlayerSpace = new Coordinate()
             {
                 X = 23,
-                Y = 7
+                Y = 6
             };
 
             MovePlayer(0, 0,active);

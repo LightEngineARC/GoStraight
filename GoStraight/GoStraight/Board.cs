@@ -64,9 +64,13 @@ namespace GoStraight
             Console.WriteLine("Puzzle Keys");
         }
         
-
         private ConsoleColor PathColor;
         private ConsoleColor WallColor;
+        private int Height;
+        private int Width;
+        //TODO add these to mazes
+        private int NumberLinked = 0;
+        private IList<string> LinkedBoards = new List<string>();
         private bool[,] board = new bool[50,25];//Matthew
 
         /// <summary>
@@ -80,11 +84,13 @@ namespace GoStraight
             {   // Open the text file using a stream reader.
                 using (StreamReader sr = new StreamReader(FILEPATH+".txt"))
                 {
-
+                    //TODO get height and width of the map.
                     String line = sr.ReadLine();
-                    
-
+                    Width = int.Parse(line.Trim());
+                    line = sr.ReadLine();
+                    Height = int.Parse(line.Trim());
                     //set path color to first line
+                    line = sr.ReadLine();
                     PathColor = (ConsoleColor)Enum.Parse(typeof(ConsoleColor), line);
 
                     //set wall color to second line
@@ -94,7 +100,7 @@ namespace GoStraight
                     //set the maze array to the rest of the lines.
                     line = sr.ReadToEnd();
                     int i = 0, j = 0;
-                    bool[,] result = new bool[50, 25];
+                    bool[,] result = new bool[Width, Height];
                     foreach (var row in line.Split('\n'))
                     {
                         j = 0;
