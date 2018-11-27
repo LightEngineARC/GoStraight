@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace GoStraight
@@ -11,11 +12,11 @@ namespace GoStraight
         private ConsoleColor PuzzleBlock { get; }
         private static bool isTrapted;
         private static bool isFail = false;
-
+        private static int X= 10, Y = 5;
 
         public static void MultiplePuzzle(int x, int y)
         {
-            if (Console.CursorLeft == x && Console.CursorTop == y)
+            if (x==X && y==Y)
             {
                 isTrapted = true;
             }

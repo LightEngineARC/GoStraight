@@ -16,16 +16,17 @@ namespace GoStraight
 
         static void Main(string[] args)
         {
-            Board ACTIVE_BOARD = new Board("StartBoard");
+            Board ACTIVE_BOARD = new Board("Maze");
             InitGame(ACTIVE_BOARD);
             Console.CursorVisible = false;
             // Console.WriteLine(ACTIVE_BOARD.GetCoordinate(0,0)); //shows if there is a wall at coordinate
 
             ConsoleKeyInfo keyInfo;
             ACTIVE_BOARD.PrintBoard();
-            MovePlayer(23, 10, ACTIVE_BOARD);
+            MovePlayer(3, 3, ACTIVE_BOARD);
             while ((keyInfo = Console.ReadKey(true)).Key != ConsoleKey.Escape)
             {
+                Puzzle.MultiplePuzzle(PlayerSpace.X-21, PlayerSpace.Y-5);
                 switch (keyInfo.Key)
                 {
                     case ConsoleKey.UpArrow:
@@ -64,6 +65,7 @@ namespace GoStraight
             if (CanMove(newPlayer, active))
             {
                 RemoveOldPlayer(active);
+                
 
                 //Console.BackgroundColor = PLAYERCOLOR;
                 Console.SetCursorPosition(newPlayer.X, newPlayer.Y);
@@ -72,6 +74,11 @@ namespace GoStraight
                 Console.OutputEncoding = Encoding.Default;
 
                 PlayerSpace = newPlayer;
+                Console.BackgroundColor = ConsoleColor.DarkCyan;
+                Console.SetCursorPosition(14, 8);
+              //  Console.Write(Console.CursorLeft + "," + (Console.CursorTop) + " ");
+                Console.Write((PlayerSpace.X-21) + "," + (PlayerSpace.Y-5) + " ");
+                Console.SetCursorPosition(PlayerSpace.X,PlayerSpace.Y);
             }
         }
 
@@ -129,7 +136,7 @@ namespace GoStraight
 
             PlayerSpace = new Coordinate()
             {
-                X = 23,
+                X = 22,
                 Y = 6
             };
 

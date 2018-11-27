@@ -40,7 +40,7 @@ namespace GoStraight
             Console.WriteLine("     Save");
             Console.WriteLine("     Quit");
             Console.WriteLine("     Menu");
-            Console.WriteLine("     Controls"); // maybe we can put some background sounds and make it stop with this
+            Console.WriteLine("     Position:"); // maybe we can put some background sounds and make it stop with this
             Console.SetCursorPosition(0, 15);
         }
 
