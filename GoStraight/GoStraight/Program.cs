@@ -26,7 +26,21 @@ namespace GoStraight
             MovePlayer(3, 3, ACTIVE_BOARD);
             while ((keyInfo = Console.ReadKey(true)).Key != ConsoleKey.Escape)
             {
-                Puzzle.MultiplePuzzle(PlayerSpace.X-21, PlayerSpace.Y-5);
+                if(PlayerSpace.X == 40 && PlayerSpace.Y == 10)
+                {
+                    Puzzle.MultiplePuzzle();
+                    if(Puzzle.isFail == true)
+                    {
+                        Console.Clear();
+                        Console.WriteLine("GAME OVER");
+                        return;
+                    }
+                    else
+                    {
+                        Main(new string[1]);
+                    }
+                }
+                //Puzzle.MultiplePuzzle(PlayerSpace.X-21, PlayerSpace.Y-5);
                 switch (keyInfo.Key)
                 {
                     case ConsoleKey.UpArrow:
@@ -77,7 +91,7 @@ namespace GoStraight
                 Console.BackgroundColor = ConsoleColor.DarkCyan;
                 Console.SetCursorPosition(14, 8);
               //  Console.Write(Console.CursorLeft + "," + (Console.CursorTop) + " ");
-                Console.Write((PlayerSpace.X-21) + "," + (PlayerSpace.Y-5) + " ");
+                Console.Write((PlayerSpace.X) + "," + (PlayerSpace.Y) + " ");
                 Console.SetCursorPosition(PlayerSpace.X,PlayerSpace.Y);
             }
         }

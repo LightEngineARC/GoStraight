@@ -11,18 +11,18 @@ namespace GoStraight
     {
         private ConsoleColor PuzzleBlock { get; }
         private static bool isTrapted;
-        private static bool isFail = false;
+        public static bool isFail { get; set; } = false;
         private static int X= 10, Y = 5;
 
-        public static void MultiplePuzzle(int x, int y)
+        public static void MultiplePuzzle()
         {
-            if (x==X && y==Y)
-            {
-                isTrapted = true;
-            }
+            //if (x==X && y==Y)
+            //{
+            //    isTrapted = true;
+            //}
 
-            if (isTrapted)
-            {
+            //if (isTrapted)
+            
                 Console.Clear();
                 Console.BackgroundColor = ConsoleColor.Black;
 
@@ -38,9 +38,9 @@ namespace GoStraight
                 {
                     Console.WriteLine("You faild to solve the answer!");
                     Thread.Sleep(2000);
-                    Console.WriteLine("GAME OVER!");
                     Console.Clear();
                     isFail = true;
+                   // Console.WriteLine("GAME OVER!");
                     return;
                 }
 
@@ -68,7 +68,7 @@ namespace GoStraight
                     }
 
                 }
-            }
+            
         }
     }
 }
