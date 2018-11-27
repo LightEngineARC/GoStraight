@@ -9,7 +9,65 @@ namespace GoStraight
     class Puzzle
     {
         private ConsoleColor PuzzleBlock { get; }
-        //TODO puzzletype
-        //TODO interact options
+        private static bool isTrapted;
+        private static bool isFail = false;
+
+
+        public static void MultiplePuzzle(int x, int y)
+        {
+            if (Console.CursorLeft == x && Console.CursorTop == y)
+            {
+                isTrapted = true;
+            }
+
+            if (isTrapted)
+            {
+                Console.Clear();
+                Console.BackgroundColor = ConsoleColor.Black;
+
+                Random r = new Random();
+                int p = r.Next(1, 10);
+                int q = r.Next(1, 10);
+                int answer = p * q;
+                Console.WriteLine($"What is {p} * {q}?");
+                Console.Write("Your Answer: ");
+                int reply = Convert.ToInt32(Console.ReadLine());
+
+                if (reply != (answer))
+                {
+                    Console.WriteLine("You faild to solve the answer!");
+                    Thread.Sleep(2000);
+                    Console.WriteLine("GAME OVER!");
+                    Console.Clear();
+                    isFail = true;
+                    return;
+                }
+
+                else
+                {
+                    Console.Clear();
+                    Console.WriteLine("What is Sin(pi) * Cos(0)?");
+                    Console.Write("Your Answer: ");
+                    int reply1 = Convert.ToInt32(Console.ReadLine());
+                    if (reply1 == 0)
+                    {
+                        Console.WriteLine("Okay, Let's Continue!");
+                        Thread.Sleep(1000);
+                        Console.Clear();
+                        return;
+                    }
+                    else
+                    {
+                        Console.WriteLine("You faild to solve the answer!");
+                        Thread.Sleep(2000);
+                        Console.WriteLine("GAME OVER!");
+                        Console.Clear();
+                        isFail = true;
+                        return;
+                    }
+
+                }
+            }
+        }
     }
 }
