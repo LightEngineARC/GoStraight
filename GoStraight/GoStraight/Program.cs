@@ -148,12 +148,17 @@ namespace GoStraight
         {
             SetBackgroundColor(active);
 
-            PlayerSpace = new Coordinate()
+            if (PlayerSpace == null)
             {
-                X = 22,
-                Y = 6
-            };
-
+                PlayerSpace = new Coordinate()
+                {
+                    X = 22,
+                    Y = 6
+                };
+            } else
+            {
+                PlayerSpace.X++;
+            }
             MovePlayer(0, 0,active);
 
         }
