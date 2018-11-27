@@ -45,7 +45,11 @@ namespace GoStraight
                         break;
                 }
             }
-            //TODO add end game stuff here.
+            //End game stuff
+            Console.SetCursorPosition(25, 2);
+            Console.BackgroundColor = ConsoleColor.DarkCyan;
+            Console.Write("Good Bye from your friends Jae, Ashton, Mathew, and Khayman\n");
+            Console.SetCursorPosition(25, 3);
 
         }
 
@@ -70,7 +74,8 @@ namespace GoStraight
                 Console.OutputEncoding = Encoding.Default;
                 Console.Write('X');
                 Console.OutputEncoding = Encoding.Default;
-
+                //TODO send the Board the new coordinate and if it matches a puzzle or exit coordinate
+                //do the function of the coordinate
                 PlayerSpace = newPlayer;
             }
         }
@@ -99,7 +104,7 @@ namespace GoStraight
             if (c.Y < 5 || c.Y >= Console.WindowHeight)
                 return false;
 
-            //TODO check map for the walls or blocks that can not be crossed.
+            //check map for the walls or blocks that can not be crossed.
             if (active.GetCoordinate(c.X-21,c.Y-5))//coordinates inside the allowed maze block
             {
                 return false;
@@ -147,6 +152,4 @@ namespace GoStraight
         public int X { get; set; } //Left
         public int Y { get; set; } //Top
     }
-    //TODO define maze layout sizes. use the areas to display text
-    //TODO print each area by controlling the background color and the foreground color then printing the maze
 }
