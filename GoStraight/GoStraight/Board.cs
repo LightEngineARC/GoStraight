@@ -64,7 +64,7 @@ namespace GoStraight
             Console.WriteLine("");
             Console.SetCursorPosition(74, 7);
             Console.WriteLine("Step: ");
-            
+
             Console.SetCursorPosition(74, 9);
             Console.WriteLine("Puzzles Solved: ");
         }
@@ -196,15 +196,22 @@ namespace GoStraight
         {
             string maze = fileName + ".txt";
             string[] oldMaze = File.ReadAllLines(maze);
-            using (StreamWriter writer = new StreamWriter(fileName + ".txt"))
+            File.Delete(maze);
+            string[] newMaze = new string[oldMaze.Length];
+            for (int i = 0; i < oldMaze.Length; i++)
             {
-                for (int i = 1; i < oldMaze.Length; i++)
-                {
-                    if (i == 3) writer.WriteLine(x);
-                    else if (i == 4) writer.WriteLine(y);
-                    writer.WriteLine(oldMaze[i]);
-                }
+                if (i == 3) newMaze[i] = x.ToString();
+                else if (i == 4) newMaze[i] = y.ToString();
+                newMaze[i] = oldMaze[i];
             }
+            StreamWriter sr = new StreamWriter(maze);
+            for(int i  = 1; i < newMaze.Length; i++)
+            {
+                sr.WriteLine(newMaze[i]);
+            }
+            
+            
+
             Console.BackgroundColor = ConsoleColor.Black;
             Console.Clear();
             Console.WriteLine("Save Complete!");
@@ -217,6 +224,6 @@ namespace GoStraight
         }
 
 
-}
+    }
 
 }
