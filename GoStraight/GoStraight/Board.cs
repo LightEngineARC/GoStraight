@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
+using System.Threading;
 
 namespace GoStraight
 {
@@ -32,15 +33,20 @@ namespace GoStraight
             //TODO create unchanging background for this section top 5 bottom 55 left 20
             Console.SetCursorPosition(0, 5);
             Console.BackgroundColor = ConsoleColor.DarkCyan;
-            for(int i= 0; i < 25; i++)
+            for (int i = 0; i < 25; i++)
             {
                 Console.WriteLine("                    ");
             }
             Console.SetCursorPosition(0, 5);
-            Console.WriteLine("     Save");
-            Console.WriteLine("     Quit");
-            Console.WriteLine("     Menu");
-            Console.WriteLine("     Position:"); // maybe we can put some background sounds and make it stop with this
+            Console.WriteLine("    Save : Press 's'");
+            Console.WriteLine("    Quit : Press 'q'");
+            Console.WriteLine("    Menu");
+            Console.WriteLine("    Start Position:");
+            Console.WriteLine("               "
+                + StartPositionX + "," + StartPositionY + " ");
+            Console.WriteLine("--------------------");
+            Console.WriteLine("    Player's info");
+            Console.WriteLine("    Position:"); // maybe we can put some background sounds and make it stop with this
             Console.SetCursorPosition(0, 15);
         }
 
@@ -49,29 +55,30 @@ namespace GoStraight
             //TODO create unchanging background for this section. top 5, left (72?) right +20
             for (int i = 0; i < 25; i++)
             {
-                Console.SetCursorPosition(72, 5+i);
+                Console.SetCursorPosition(72, 5 + i);
                 Console.WriteLine("                    ");
             }
             Console.SetCursorPosition(74, 5);
             Console.WriteLine("Player's info");
             Console.SetCursorPosition(74, 6);
-            Console.WriteLine("Statics");
+            Console.WriteLine("");
             Console.SetCursorPosition(74, 7);
-            Console.WriteLine("Inventory");
-            Console.SetCursorPosition(74, 8);
-            Console.WriteLine("Item slots");
+            Console.WriteLine("Step: ");
+            
             Console.SetCursorPosition(74, 9);
-            Console.WriteLine("Puzzle Keys");
+            Console.WriteLine("Puzzles Solved: ");
         }
-        
+
         private ConsoleColor PathColor;
         private ConsoleColor WallColor;
         private int Height;
         private int Width;
+        public static int StartPositionX { get; private set; }
+        public static int StartPositionY { get; private set; }
         //TODO add these to mazes
         private int NumberLinked = 0;
         private IList<string> LinkedBoards = new List<string>();
-        private bool[,] board = new bool[50,25];//Matthew
+        private bool[,] board = new bool[50, 25];//Matthew
 
         /// <summary>
         /// Constructor builds board from filename
@@ -82,13 +89,17 @@ namespace GoStraight
         {
             try
             {   // Open the text file using a stream reader.
-                using (StreamReader sr = new StreamReader(FILEPATH+".txt"))
+                using (StreamReader sr = new StreamReader(FILEPATH + ".txt"))
                 {
                     //get height and width of the map.
                     String line = sr.ReadLine();
                     Width = int.Parse(line.Trim());
                     line = sr.ReadLine();
                     Height = int.Parse(line.Trim());
+                    line = sr.ReadLine();
+                    StartPositionX = int.Parse(line.Trim());
+                    line = sr.ReadLine();
+                    StartPositionY = int.Parse(line.Trim());
                     //set path color to first line
                     line = sr.ReadLine();
                     PathColor = (ConsoleColor)Enum.Parse(typeof(ConsoleColor), line);
@@ -147,14 +158,14 @@ namespace GoStraight
         /// </summary>
         public void PrintBoard()
         {
-            Outline();PlayerInfo();GameFunction();
-            for(int i = 0; i< 50;i++)
+            Outline(); PlayerInfo(); GameFunction();
+            for (int i = 0; i < 50; i++)
             {
-                for(int j = 0; j<25;  j++)
+                for (int j = 0; j < 25; j++)
                 {
                     // print " " if wall or path
-                    Console.SetCursorPosition(21+i,5+j);
-                    if(board[i, j])//if wall use WallColor
+                    Console.SetCursorPosition(21 + i, 5 + j);
+                    if (board[i, j])//if wall use WallColor
                     {
                         Console.BackgroundColor = WallColor;
                     }
@@ -171,9 +182,9 @@ namespace GoStraight
         }
         public void InverseBoard()
         {
-           for(int i = 0; i< 25; i++)
+            for (int i = 0; i < 25; i++)
             {
-                for(int j = 0; j < 50; j++)
+                for (int j = 0; j < 50; j++)
                 {
                     board[j, i] = !board[j, i];
                 }
@@ -181,6 +192,31 @@ namespace GoStraight
             this.PrintBoard();
 
         }
-    }
-  
+        public static void Save(int x, int y, string fileName)
+        {
+            string maze = fileName + ".txt";
+            string[] oldMaze = File.ReadAllLines(maze);
+            using (StreamWriter writer = new StreamWriter(fileName + ".txt"))
+            {
+                for (int i = 1; i < oldMaze.Length; i++)
+                {
+                    if (i == 3) writer.WriteLine(x);
+                    else if (i == 4) writer.WriteLine(y);
+                    writer.WriteLine(oldMaze[i]);
+                }
+            }
+            Console.BackgroundColor = ConsoleColor.Black;
+            Console.Clear();
+            Console.WriteLine("Save Complete!");
+            Thread.Sleep(1000);
+            return;
+        }
+        public static int StepCount(int x)
+        {
+            return x;
+        }
+
+
+}
+
 }

@@ -13,17 +13,18 @@ namespace GoStraight
         //const ConsoleColor BACKGROUND_COLOR = ConsoleColor.Green;
 
         public static Coordinate PlayerSpace { get; set; } //Will represent our player that's moving around
+        private static int CountSteps = 0;
 
         static void Main(string[] args)
         {
-            Board ACTIVE_BOARD = new Board("BlankMaze");
+            Board ACTIVE_BOARD = new Board("Maze");
             InitGame(ACTIVE_BOARD);
             Console.CursorVisible = false;
             // Console.WriteLine(ACTIVE_BOARD.GetCoordinate(0,0)); //shows if there is a wall at coordinate
-
             ConsoleKeyInfo keyInfo;
             ACTIVE_BOARD.PrintBoard();
-            MovePlayer(3, 3, ACTIVE_BOARD);
+            MovePlayer(0, 0, ACTIVE_BOARD);
+            bool isMazeDone = false;
             while ((keyInfo = Console.ReadKey(true)).Key != ConsoleKey.Escape)
             {
                 if(PlayerSpace.X == 40 && PlayerSpace.Y == 10)
@@ -40,25 +41,43 @@ namespace GoStraight
                         Main(new string[1]);
                     }
                 }
+                if(PlayerSpace.X == 41 && PlayerSpace.Y == 10)
+                {
+                    isMazeDone = true;
+                }
                 //Puzzle.MultiplePuzzle(PlayerSpace.X-21, PlayerSpace.Y-5);
                 switch (keyInfo.Key)
                 {
                     case ConsoleKey.UpArrow:
                         MovePlayer(0, -1,ACTIVE_BOARD);
+                        CountSteps++;
                         break;
 
                     case ConsoleKey.RightArrow:
                         MovePlayer(1, 0,ACTIVE_BOARD);
+                        CountSteps++;
                         break;
 
                     case ConsoleKey.DownArrow:
                         MovePlayer(0, 1,ACTIVE_BOARD);
+                        CountSteps++;
                         break;
 
                     case ConsoleKey.LeftArrow:
                         MovePlayer(-1, 0,ACTIVE_BOARD);
+                        CountSteps++;
                         break;
+                    case ConsoleKey.S:
+                        Board.Save(PlayerSpace.X,PlayerSpace.Y,"Maze");
+                        Console.BackgroundColor = ConsoleColor.Black;
+                        return;
+                    case ConsoleKey.Q:
+                        Console.BackgroundColor = ConsoleColor.Black;
+                        Console.Clear();
+                        return;
                 }
+                Console.SetCursorPosition(80, 7);
+                Console.Write(CountSteps);
             }
             //TODO add end game stuff here.
 
@@ -89,9 +108,11 @@ namespace GoStraight
 
                 PlayerSpace = newPlayer;
                 Console.BackgroundColor = ConsoleColor.DarkCyan;
-                Console.SetCursorPosition(14, 8);
-              //  Console.Write(Console.CursorLeft + "," + (Console.CursorTop) + " ");
+                Console.SetCursorPosition(14, 12);
+              //Console.Write(Console.CursorLeft + "," + (Console.CursorTop) + " ");
                 Console.Write((PlayerSpace.X) + "," + (PlayerSpace.Y) + " ");
+                Console.SetCursorPosition(90, 9);
+                Console.Write(Puzzle.puzzleCount);
                 Console.SetCursorPosition(PlayerSpace.X,PlayerSpace.Y);
             }
         }
@@ -152,8 +173,8 @@ namespace GoStraight
             {
                 PlayerSpace = new Coordinate()
                 {
-                    X = 22,
-                    Y = 6
+                    X = Board.StartPositionX,
+                    Y = Board.StartPositionY
                 };
             } else
             {

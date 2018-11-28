@@ -13,6 +13,7 @@ namespace GoStraight
         private static bool isTrapted;
         public static bool isFail { get; set; } = false;
         private static int X= 10, Y = 5;
+        public static int puzzleCount { get; set; } = 0;
 
         public static void MultiplePuzzle()
         {
@@ -55,6 +56,7 @@ namespace GoStraight
                         Console.WriteLine("Okay, Let's Continue!");
                         Thread.Sleep(1000);
                         Console.Clear();
+                        puzzleCount++;
                         return;
                     }
                     else
