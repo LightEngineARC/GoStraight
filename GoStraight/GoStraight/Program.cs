@@ -50,22 +50,18 @@ namespace GoStraight
                 {
                     case ConsoleKey.UpArrow:
                         MovePlayer(0, -1,ACTIVE_BOARD);
-                        CountSteps++;
                         break;
 
                     case ConsoleKey.RightArrow:
                         MovePlayer(1, 0,ACTIVE_BOARD);
-                        CountSteps++;
                         break;
 
                     case ConsoleKey.DownArrow:
                         MovePlayer(0, 1,ACTIVE_BOARD);
-                        CountSteps++;
                         break;
 
                     case ConsoleKey.LeftArrow:
                         MovePlayer(-1, 0,ACTIVE_BOARD);
-                        CountSteps++;
                         break;
                     case ConsoleKey.S:
                         Board.Save(PlayerSpace.X,PlayerSpace.Y,"Maze");
@@ -97,6 +93,7 @@ namespace GoStraight
 
             if (CanMove(newPlayer, active))
             {
+                CountSteps++;
                 RemoveOldPlayer(active);
                 
 
