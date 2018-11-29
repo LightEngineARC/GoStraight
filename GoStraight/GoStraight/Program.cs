@@ -13,7 +13,7 @@ namespace GoStraight
         //const ConsoleColor BACKGROUND_COLOR = ConsoleColor.Green;
 
         public static Coordinate PlayerSpace { get; set; } //Will represent our player that's moving around
-        private static int CountSteps = 0;
+        private static int CountSteps = -1;
 
         static void Main(string[] args)
         {
@@ -49,26 +49,22 @@ namespace GoStraight
                 switch (keyInfo.Key)
                 {
                     case ConsoleKey.UpArrow:
-                        MovePlayer(0, -1,ACTIVE_BOARD);
-                        CountSteps++;
+                        MovePlayer(0, -1, ACTIVE_BOARD);
                         break;
 
                     case ConsoleKey.RightArrow:
-                        MovePlayer(1, 0,ACTIVE_BOARD);
-                        CountSteps++;
+                        MovePlayer(1, 0, ACTIVE_BOARD);
                         break;
 
                     case ConsoleKey.DownArrow:
-                        MovePlayer(0, 1,ACTIVE_BOARD);
-                        CountSteps++;
+                        MovePlayer(0, 1, ACTIVE_BOARD);
                         break;
 
                     case ConsoleKey.LeftArrow:
-                        MovePlayer(-1, 0,ACTIVE_BOARD);
-                        CountSteps++;
+                        MovePlayer(-1, 0, ACTIVE_BOARD);
                         break;
                     case ConsoleKey.S:
-                        Board.Save(PlayerSpace.X,PlayerSpace.Y,"Maze");
+                        Board.Save(PlayerSpace.X, PlayerSpace.Y, "Maze");
                         Console.BackgroundColor = ConsoleColor.Black;
                         return;
                     case ConsoleKey.Q:
@@ -76,8 +72,6 @@ namespace GoStraight
                         Console.Clear();
                         return;
                 }
-                Console.SetCursorPosition(80, 7);
-                Console.Write(CountSteps);
             }
             //TODO add end game stuff here.
 
@@ -105,7 +99,7 @@ namespace GoStraight
                 Console.OutputEncoding = Encoding.Default;
                 Console.Write('X');
                 Console.OutputEncoding = Encoding.Default;
-
+                CountSteps++;
                 PlayerSpace = newPlayer;
                 Console.BackgroundColor = ConsoleColor.DarkCyan;
                 Console.SetCursorPosition(14, 12);
@@ -114,6 +108,8 @@ namespace GoStraight
                 Console.SetCursorPosition(90, 9);
                 Console.Write(Puzzle.puzzleCount);
                 Console.SetCursorPosition(PlayerSpace.X,PlayerSpace.Y);
+                Console.SetCursorPosition(80, 7);
+                Console.Write(CountSteps);
             }
         }
 
