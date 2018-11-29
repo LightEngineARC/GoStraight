@@ -42,7 +42,7 @@ namespace GoStraight
             Console.WriteLine("    Quit : Press 'q'");
             Console.WriteLine("    Menu");
             Console.WriteLine("    Start Position:");
-            Console.WriteLine("               "
+            Console.WriteLine("              "
                 + StartPositionX + "," + StartPositionY + " ");
             Console.WriteLine("--------------------");
             Console.WriteLine("    Player's info");
@@ -107,7 +107,7 @@ namespace GoStraight
                     //set wall color to second line
                     line = sr.ReadLine();
                     WallColor = (ConsoleColor)Enum.Parse(typeof(ConsoleColor), line);
-
+                    
                     //set the maze array to the rest of the lines.
                     line = sr.ReadToEnd();
                     int i = 0, j = 0;
@@ -132,6 +132,20 @@ namespace GoStraight
             }
         }
 
+        //public void Log(string s)
+        //{
+        //    try
+        //    {
+        //        using (StreamWriter writer = new StreamWriter("Log.txt", true))
+        //        {
+        //            writer.WriteLine(s);
+        //        }
+        //    }catch (Exception e)
+        //    {
+
+        //    }
+        //}
+       
         /// <summary>
         /// Helper method to verify the bool array was read correctly
         /// </summary>
@@ -194,15 +208,16 @@ namespace GoStraight
         }
         public static void Save(int x, int y, string fileName)
         {
-            string maze = fileName + ".txt";
+            string maze = fileName;
             string[] oldMaze = File.ReadAllLines(maze);
-            using (StreamWriter writer = new StreamWriter(fileName + ".txt"))
+            using (StreamWriter writer = new StreamWriter(fileName +".txt"))
             {
-                for (int i = 1; i < oldMaze.Length; i++)
+                for (int i = 0; i < oldMaze.Length; i++)
                 {
-                    if (i == 3) writer.WriteLine(x);
-                    else if (i == 4) writer.WriteLine(y);
-                    writer.WriteLine(oldMaze[i]);
+                    if (i == 2) { writer.WriteLine(x); }
+                    else if (i == 3) { writer.WriteLine(y); }
+                    else if (i == oldMaze.Length-1) writer.Write(oldMaze[i]);
+                    else writer.WriteLine(oldMaze[i]);
                 }
             }
             Console.BackgroundColor = ConsoleColor.Black;

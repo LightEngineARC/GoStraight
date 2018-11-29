@@ -23,7 +23,7 @@ namespace GoStraight
             // Console.WriteLine(ACTIVE_BOARD.GetCoordinate(0,0)); //shows if there is a wall at coordinate
             ConsoleKeyInfo keyInfo;
             ACTIVE_BOARD.PrintBoard();
-            MovePlayer(0, 0, ACTIVE_BOARD);
+            MovePlayer(Board.StartPositionX, Board.StartPositionY -4, ACTIVE_BOARD);
             bool isMazeDone = false;
             while ((keyInfo = Console.ReadKey(true)).Key != ConsoleKey.Escape)
             {
@@ -173,8 +173,8 @@ namespace GoStraight
             {
                 PlayerSpace = new Coordinate()
                 {
-                    X = Board.StartPositionX,
-                    Y = Board.StartPositionY
+                    X = 0,
+                    Y = 4
                 };
             } else
             {
