@@ -209,7 +209,7 @@ namespace GoStraight
         public static void Save(int x, int y, string fileName)
         {
             string maze = fileName;
-            string[] oldMaze = File.ReadAllLines(maze);
+            string[] oldMaze = File.ReadAllLines(maze+".txt");
             using (StreamWriter writer = new StreamWriter(fileName +".txt"))
             {
                 for (int i = 0; i < oldMaze.Length; i++)

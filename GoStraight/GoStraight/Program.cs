@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,11 +14,29 @@ namespace GoStraight
         //const ConsoleColor BACKGROUND_COLOR = ConsoleColor.Green;
 
         public static Coordinate PlayerSpace { get; set; } //Will represent our player that's moving around
+
         private static int CountSteps = -1;
+
+        private static string saveBoard = "savedboard";
+        private static string loadboard;
 
         static void Main(string[] args)
         {
-            Board ACTIVE_BOARD = new Board("StartBoard");
+            
+            try
+            {
+                using (StreamReader sr = new StreamReader(saveBoard + ".txt"))
+                {
+                    loadboard = sr.ReadLine().Trim();
+                }
+            }
+            catch (Exception e)
+            {
+                Console.SetCursorPosition(44, 15);
+                Console.WriteLine("The saveboard could not be read:");
+                Console.WriteLine(e.Message);
+            }
+            Board ACTIVE_BOARD = new Board(loadboard);
             InitGame(ACTIVE_BOARD);
             Console.CursorVisible = false;
             // Console.WriteLine(ACTIVE_BOARD.GetCoordinate(0,0)); //shows if there is a wall at coordinate
@@ -64,7 +83,9 @@ namespace GoStraight
                         MovePlayer(-1, 0,ACTIVE_BOARD);
                         break;
                     case ConsoleKey.S:
-                        Board.Save(PlayerSpace.X, PlayerSpace.Y, "Maze");
+
+                        UpdateLoadBoard();
+                        Board.Save(PlayerSpace.X,PlayerSpace.Y,loadboard);
                         Console.BackgroundColor = ConsoleColor.Black;
                         return;
                     case ConsoleKey.Q:
@@ -138,7 +159,7 @@ namespace GoStraight
             if (c.Y < 5 || c.Y >= Console.WindowHeight)
                 return false;
 
-            //TODO check map for the walls or blocks that can not be crossed.
+            //check map for the walls or blocks that can not be crossed.
             if (active.GetCoordinate(c.X-21,c.Y-5))//coordinates inside the allowed maze block
             {
                 return false;
@@ -179,6 +200,18 @@ namespace GoStraight
             }
             MovePlayer(0, 0,active);
 
+        }
+
+        /// <summary>
+        /// writes the filename of the current board to the savedboard file.
+        /// <author>Ashton</author>
+        /// </summary>
+        static void UpdateLoadBoard()
+        {
+            using (StreamWriter writer = new StreamWriter(saveBoard + ".txt"))
+            {
+                writer.Write(loadboard);
+            }
         }
     }
 
