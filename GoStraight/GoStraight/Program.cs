@@ -17,7 +17,7 @@ namespace GoStraight
 
         static void Main(string[] args)
         {
-            Board ACTIVE_BOARD = new Board("HallwayDiamond");
+            Board ACTIVE_BOARD = new Board("StartBoard");
             InitGame(ACTIVE_BOARD);
             Console.CursorVisible = false;
             // Console.WriteLine(ACTIVE_BOARD.GetCoordinate(0,0)); //shows if there is a wall at coordinate
@@ -191,6 +191,5 @@ namespace GoStraight
         public int X { get; set; } //Left
         public int Y { get; set; } //Top
     }
-    //TODO define maze layout sizes. use the areas to display text
-    //TODO print each area by controlling the background color and the foreground color then printing the maze
+    //TODO use the areas to display text for the players
 }

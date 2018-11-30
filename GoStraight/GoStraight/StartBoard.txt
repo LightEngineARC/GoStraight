@@ -1,5 +1,7 @@
 50
 25
+32
+18
 Blue
 DarkRed
 true ,true ,true ,true ,true ,true ,true ,true ,true ,true ,true ,true ,true ,true ,true ,true ,true ,true ,true ,true ,true ,true ,true ,true ,true 
