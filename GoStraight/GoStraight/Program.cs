@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,10 +15,26 @@ namespace GoStraight
 
         public static Coordinate PlayerSpace { get; set; } //Will represent our player that's moving around
         private static int CountSteps = 0;
+        private static string saveBoard = "savedboard";
+        private static string loadboard;
 
         static void Main(string[] args)
         {
-            Board ACTIVE_BOARD = new Board("StartBoard");
+            
+            try
+            {
+                using (StreamReader sr = new StreamReader(saveBoard + ".txt"))
+                {
+                    loadboard = sr.ReadLine().Trim();
+                }
+            }
+            catch (Exception e)
+            {
+                Console.SetCursorPosition(44, 15);
+                Console.WriteLine("The saveboard could not be read:");
+                Console.WriteLine(e.Message);
+            }
+            Board ACTIVE_BOARD = new Board(loadboard);
             InitGame(ACTIVE_BOARD);
             Console.CursorVisible = false;
             // Console.WriteLine(ACTIVE_BOARD.GetCoordinate(0,0)); //shows if there is a wall at coordinate
@@ -64,7 +81,7 @@ namespace GoStraight
                         MovePlayer(-1, 0,ACTIVE_BOARD);
                         break;
                     case ConsoleKey.S:
-                        Board.Save(PlayerSpace.X,PlayerSpace.Y,"Maze");
+                        Board.Save(PlayerSpace.X,PlayerSpace.Y,loadboard);
                         Console.BackgroundColor = ConsoleColor.Black;
                         return;
                     case ConsoleKey.Q:
