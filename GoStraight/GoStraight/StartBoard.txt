@@ -1,6 +1,6 @@
 50
 25
-32
+46
 18
 Blue
 DarkRed
