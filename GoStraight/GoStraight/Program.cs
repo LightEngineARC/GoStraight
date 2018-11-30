@@ -81,6 +81,7 @@ namespace GoStraight
                         MovePlayer(-1, 0,ACTIVE_BOARD);
                         break;
                     case ConsoleKey.S:
+                        UpdateLoadBoard();
                         Board.Save(PlayerSpace.X,PlayerSpace.Y,loadboard);
                         Console.BackgroundColor = ConsoleColor.Black;
                         return;
@@ -155,7 +156,7 @@ namespace GoStraight
             if (c.Y < 5 || c.Y >= Console.WindowHeight)
                 return false;
 
-            //TODO check map for the walls or blocks that can not be crossed.
+            //check map for the walls or blocks that can not be crossed.
             if (active.GetCoordinate(c.X-21,c.Y-5))//coordinates inside the allowed maze block
             {
                 return false;
@@ -196,6 +197,18 @@ namespace GoStraight
             }
             MovePlayer(0, 0,active);
 
+        }
+
+        /// <summary>
+        /// writes the filename of the current board to the savedboard file.
+        /// <author>Ashton</author>
+        /// </summary>
+        static void UpdateLoadBoard()
+        {
+            using (StreamWriter writer = new StreamWriter(saveBoard + ".txt"))
+            {
+                writer.Write(loadboard);
+            }
         }
     }
 
