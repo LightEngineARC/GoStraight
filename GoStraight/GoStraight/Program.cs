@@ -8,7 +8,7 @@ namespace GoStraight
     class Program
     {
         public static Coordinate PlayerSpace { get; set; } //Will represent our player that's moving around
-
+        
         private static int CountSteps = -1;
         private static string saveBoard = "savedboard";
         private static string loadboard;
