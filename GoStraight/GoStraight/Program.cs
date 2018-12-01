@@ -187,6 +187,8 @@ namespace GoStraight
                     //TODO load new board
                     loadboard = active.getLinkedBoard(newPlayer);
                     ACTIVE_BOARD = new Board(loadboard);
+                    Board blank = new Board("BlankMaze");
+                    blank.PrintBoard();
                     ACTIVE_BOARD.PrintBoard();
                     newPlayer = new Coordinate
                     {
