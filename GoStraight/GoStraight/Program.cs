@@ -187,7 +187,8 @@ namespace GoStraight
                         Y = Board.StartPositionY
                     };
                     PlayerSpace = newPlayer;
-                    MovePlayer(0, 0, ACTIVE_BOARD);
+                    MovePlayer(1, 0, ACTIVE_BOARD);
+
                 }else
                 {
                     CountSteps++;
