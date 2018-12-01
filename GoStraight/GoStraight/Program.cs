@@ -7,8 +7,8 @@ namespace GoStraight
 {
     class Program
     {
-        public static char playerChar = (char)992;
-
+        public static char playerChar = (char)976;
+        
         public static Coordinate PlayerSpace { get; set; } //Will represent our player that's moving around
         
         private static int CountSteps = -1;
@@ -21,7 +21,7 @@ namespace GoStraight
         static void Main(string[] args)
         {
 
-            
+            Console.OutputEncoding = System.Text.Encoding.UTF8;
             try
             {
                 using (StreamReader sr = new StreamReader(saveBoard + ".txt"))
@@ -154,7 +154,6 @@ namespace GoStraight
 
         private static void PrintPuzzle(Puzzle[] puzzlesInThisMaze, int xAdj, int yAdj)
         {
-            Console.OutputEncoding = System.Text.Encoding.UTF8;
             Console.BackgroundColor = ConsoleColor.Black;
             puzzlesInThisMaze.Where((x) => !x.IsTrap)  // prints tiles for Puzzles that are visible
                 .ToList()

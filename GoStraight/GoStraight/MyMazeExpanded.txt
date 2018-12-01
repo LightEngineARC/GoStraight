@@ -1,9 +1,12 @@
 50
 25
-1
+2
+Maze
 KMaze
 69
 27
+22
+6
 22
 6
 DarkBlue
