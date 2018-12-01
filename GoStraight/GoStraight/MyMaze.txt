@@ -1,5 +1,7 @@
-50
 25
+25
+26
+6
 DarkBlue
 Cyan
 true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true
