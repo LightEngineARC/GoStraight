@@ -83,6 +83,7 @@ namespace GoStraight
             Console.WriteLine("Puzzles Solved: ");
         }
 
+
         /// <summary>
         /// Constructor builds board from filename
         /// </summary>

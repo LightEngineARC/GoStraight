@@ -15,8 +15,11 @@ namespace GoStraight
         private static string saveBoard = "savedboard";
         private static string loadboard;
 
+        private static Random rand = new Random();
+
         static void Main(string[] args)
         {
+
             
             try
             {
@@ -32,32 +35,83 @@ namespace GoStraight
                 Console.WriteLine(e.Message);
             }
             Board ACTIVE_BOARD = new Board(loadboard);
+//            Console.SetBufferSize(1000, 1000);  // Just for Matt's computer. Everyone else can comment this out
+
             InitGame(ACTIVE_BOARD);
             Console.CursorVisible = false;
             // Console.WriteLine(ACTIVE_BOARD.GetCoordinate(0,0)); //shows if there is a wall at coordinate
             ConsoleKeyInfo keyInfo;
             ACTIVE_BOARD.PrintBoard();
-            MovePlayer(Board.StartPositionX, Board.StartPositionY -4, ACTIVE_BOARD);
+            MovePlayer(Board.StartPositionX, Board.StartPositionY - 4, ACTIVE_BOARD);
             bool isMazeDone = false;
+
+            // create puzzle to call
+            Coordinate coordinate1 = new Coordinate
+            {
+                X = 40,
+                Y = 10
+            };
+            int p = rand.Next(1, 10);
+            int q = rand.Next(1, 10);
+            Puzzle jaesPuzzle1 = new Puzzle(loadboard, coordinate1, true, $"What is {p} * {q}?", (p * q).ToString());
+
+            Coordinate coordinate2 = new Coordinate
+            {
+                X = 46,
+                Y = 13
+            };
+            Puzzle jaesPuzzle2 = new Puzzle(loadboard, coordinate2, false, "What is Sin(pi) * Cos(0)?", "0");
+
+            Puzzle[] puzzles = new Puzzle[] { jaesPuzzle1, jaesPuzzle2 }; // in final, will be replaced with list of all puzzles in all mazes
+
+            //array with just the Puzzles for the active maze.
+            Puzzle[] puzzlesInThisMaze = puzzles.Where((x) => x.Maze.Equals(loadboard)).ToArray();
+
+            //print tiles for visible puzzles
+            int xAdj = 0; //21;
+            int yAdj = 0; // 5;
+
+            //Puzzle[] visiblePuzzles = puzzlesInThisMaze.Where((x) => !x.IsTrap).ToArray();
+
+            PrintPuzzle(puzzlesInThisMaze, xAdj, yAdj);
+
             while ((keyInfo = Console.ReadKey(true)).Key != ConsoleKey.Escape)
             {
-                if(PlayerSpace.X == 40 && PlayerSpace.Y == 10)
+                // cycle through puzzles in this maze:
+                Puzzle[] currentPuzzle = puzzlesInThisMaze.Where((x) => (!x.HasBeenSolved && x.PuzzleLocation.Equals(PlayerSpace))).ToArray();
+                if (currentPuzzle.Length != 0 && !(currentPuzzle[0].HasBeenSolved))  // if the IEnumerable is not empty and thus the player occupies the space of a Puzzle
                 {
-                    Puzzle.MultiplePuzzle();
-                    if(Puzzle.isFail == true)
+                    if (currentPuzzle[0].RunPuzzle())  // if the player answers the puzzle successfully
                     {
-                        Console.Clear();
-                        Console.WriteLine("GAME OVER");
+                        ACTIVE_BOARD.PrintBoard();
+                        PrintPuzzle(puzzlesInThisMaze, xAdj, yAdj);
+                    }
+                    else  //if the player gets the answer wrong
+                    {
                         return;
+                    }
+                }
+                
+
+                /*
+                if (PlayerSpace.Equals(jaesPuzzle1.PuzzleLocation)) // if the player's position equals the position of the trap/puzzle
+                {
+                    if(jaesPuzzle1.RunPuzzle())   // if the player fails the puzzle
+                    {
+                        //Console.Clear();
+                        //Console.WriteLine("GAME OVER");
+                        Main(new string[1]);
                     }
                     else
                     {
-                        Main(new string[1]);
+                        return;
                     }
                 }
-                if(PlayerSpace.X == 41 && PlayerSpace.Y == 10)
+                */
+                if (PlayerSpace.X == 41 && PlayerSpace.Y == 10)
                 {
                     isMazeDone = true;
+                    //Console.WriteLine("Congradulations, you won!");
                 }
                 //Puzzle.MultiplePuzzle(PlayerSpace.X-21, PlayerSpace.Y-5);
                 switch (keyInfo.Key)
@@ -93,6 +147,20 @@ namespace GoStraight
 
         }
 
+        private static void PrintPuzzle(Puzzle[] puzzlesInThisMaze, int xAdj, int yAdj)
+        {
+            Console.OutputEncoding = System.Text.Encoding.UTF8;
+            puzzlesInThisMaze.Where((x) => !x.IsTrap)  // prints tiles for Puzzles that are visible
+                .ToList()
+                .ForEach(x =>
+                {
+                    Console.SetCursorPosition(xAdj + x.PuzzleLocation.X, yAdj + x.PuzzleLocation.Y);
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.Write(Puzzle.PuzzleDisplay);
+                });
+            Console.ForegroundColor = ConsoleColor.White;
+        }
+
         /// <summary>
         /// Paint the new player
         /// </summary>
@@ -108,16 +176,23 @@ namespace GoStraight
             if (CanMove(newPlayer, active))
             {
                 CountSteps++;
+
+                //write over the old player's position
+
                 RemoveOldPlayer(active);
                 
-
+                // pront player in new position
                 //Console.BackgroundColor = PLAYERCOLOR;
                 Console.SetCursorPosition(newPlayer.X, newPlayer.Y);
                 Console.OutputEncoding = Encoding.Default;
                 Console.Write('X');
                 Console.OutputEncoding = Encoding.Default;
+                // increase the counter for the number of steps the player has taken
                 CountSteps++;
+                // set the player's position to the new position
                 PlayerSpace = newPlayer;
+
+                // Update numbers in display
                 Console.BackgroundColor = ConsoleColor.DarkCyan;
                 Console.SetCursorPosition(14, 12);
               //Console.Write(Console.CursorLeft + "," + (Console.CursorTop) + " ");
@@ -218,6 +293,11 @@ namespace GoStraight
     {
         public int X { get; set; } //Left
         public int Y { get; set; } //Top
+
+        public override bool Equals(object obj)
+        {
+            return (X == ((Coordinate)obj).X && Y == ((Coordinate)obj).Y);
+        }
     }
     //TODO use the areas to display text for the players
 }
