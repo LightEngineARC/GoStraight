@@ -90,7 +90,7 @@ namespace GoStraight
             //Console.Clear();
             Console.BackgroundColor = ConsoleColor.Black;
             (new Board("BlankMaze")).PrintBoard();   //clears the area for the question to appear
-            Console.ReadKey();  //clears the reader so that the next input line is empty (IMPORTANT!)
+            //Console.ReadKey();  //clears the reader so that the next input line is empty (IMPORTANT!)
  
             // beggining of first question:
             Console.SetCursorPosition(21, 5);

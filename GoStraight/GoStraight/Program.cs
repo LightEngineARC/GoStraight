@@ -7,6 +7,8 @@ namespace GoStraight
 {
     class Program
     {
+        public static char playerChar = (char)992;
+
         public static Coordinate PlayerSpace { get; set; } //Will represent our player that's moving around
         
         private static int CountSteps = -1;
@@ -203,7 +205,7 @@ namespace GoStraight
                     // print player in new position
                     //Console.BackgroundColor = PLAYERCOLOR;
                     Console.SetCursorPosition(newPlayer.X, newPlayer.Y);
-                    Console.Write('X');
+                    Console.Write(playerChar);
                     // increase the counter for the number of steps the player has taken
                     CountSteps++;
                     // set the player's position to the new position
