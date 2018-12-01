@@ -155,10 +155,10 @@ namespace GoStraight
                 .ForEach(x =>
                 {
                     Console.SetCursorPosition(xAdj + x.PuzzleLocation.X, yAdj + x.PuzzleLocation.Y);
-                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.ForegroundColor = ConsoleColor.Red; //TOD set dynamically based on active board
                     Console.Write(Puzzle.PuzzleDisplay);
                 });
-            Console.ForegroundColor = ConsoleColor.White;
+            Console.ForegroundColor = ConsoleColor.White;//TODO set dynamically based on active board
         }
 
         /// <summary>
@@ -178,15 +178,12 @@ namespace GoStraight
                 CountSteps++;
 
                 //write over the old player's position
-
                 RemoveOldPlayer(active);
                 
-                // pront player in new position
+                // print player in new position
                 //Console.BackgroundColor = PLAYERCOLOR;
                 Console.SetCursorPosition(newPlayer.X, newPlayer.Y);
-                Console.OutputEncoding = Encoding.Default;
                 Console.Write('X');
-                Console.OutputEncoding = Encoding.Default;
                 // increase the counter for the number of steps the player has taken
                 CountSteps++;
                 // set the player's position to the new position
@@ -195,7 +192,8 @@ namespace GoStraight
                 // Update numbers in display
                 Console.BackgroundColor = ConsoleColor.DarkCyan;
                 Console.SetCursorPosition(14, 12);
-              //Console.Write(Console.CursorLeft + "," + (Console.CursorTop) + " ");
+
+                //Console.Write(Console.CursorLeft + "," + (Console.CursorTop) + " ");
                 Console.Write((PlayerSpace.X) + "," + (PlayerSpace.Y) + " ");
                 Console.SetCursorPosition(90, 9);
                 Console.Write(Puzzle.puzzleCount);

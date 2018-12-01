@@ -177,9 +177,9 @@ namespace GoStraight
         public void PrintBoard()
         {
             Outline(); PlayerInfo(); GameFunction();
-            for (int i = 0; i < Height; i++)
+            for (int i = 0; i < Width; i++)
             {
-                for (int j = 0; j < 25; j++)
+                for (int j = 0; j < Height; j++)
                 {
                     // print " " if wall or path
                     Console.SetCursorPosition(21 + i, 5 + j);
