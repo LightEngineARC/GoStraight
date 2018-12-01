@@ -264,6 +264,12 @@ namespace GoStraight
                     else writer.WriteLine(oldMaze[i]);
                 }
             }
+            using (StreamWriter writer = new StreamWriter("savedboard.txt"))
+            {
+                writer.Write(fileName);
+            }
+
+
             Console.BackgroundColor = ConsoleColor.Black;
             Console.Clear();
             Console.WriteLine("Save Complete!");

@@ -143,10 +143,6 @@ namespace GoStraight
                     case ConsoleKey.S:
 
                         UpdateLoadBoard();
-                        using(StreamWriter sw = new StreamWriter(saveBoard))
-                        {
-                            sw.Write("Maze");
-                        }
                         Board.Save(PlayerSpace.X,PlayerSpace.Y,loadboard);
                         Console.BackgroundColor = ConsoleColor.Black;
                         return;
