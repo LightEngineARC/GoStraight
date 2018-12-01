@@ -83,7 +83,6 @@ namespace GoStraight
             Console.WriteLine("Puzzles Solved: ");
         }
 
-
         /// <summary>
         /// Constructor builds board from filename
         /// </summary>
@@ -177,7 +176,7 @@ namespace GoStraight
         public void PrintBoard()
         {
             Outline(); PlayerInfo(); GameFunction();
-            for (int i = 0; i < 50; i++)
+            for (int i = 0; i < Height; i++)
             {
                 for (int j = 0; j < 25; j++)
                 {
@@ -234,8 +233,6 @@ namespace GoStraight
         {
             return x;
         }
-
-
 }
 
 }

@@ -1,7 +1,11 @@
 50
 25
+1
+WallwayWandering
 46
 18
+35
+10
 Blue
 DarkRed
 true ,true ,true ,true ,true ,true ,true ,true ,true ,true ,true ,true ,true ,true ,true ,true ,true ,true ,true ,true ,true ,true ,true ,true ,true 
