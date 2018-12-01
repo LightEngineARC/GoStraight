@@ -32,7 +32,11 @@ namespace GoStraight
         /// each element represents an answer to the question that is considered correct. 
         /// If the player's answer string is equal to ANY of the strings contained in this array, they pass the question. 
         /// </summary>
-        private string[] Answers { get;  }   
+        private string[] Answers { get;  }
+        /// <summary>
+        /// Tracks whether the individual puzzle has already been solved.
+        /// </summary>
+        public bool HasBeenSolved { get; set; } = false;
 
         public static bool isFail { get; set; } = false;
         public static int puzzleCount { get; set; } = 0;
@@ -106,6 +110,7 @@ namespace GoStraight
                 Console.WriteLine("Okay, Let's Continue!");
                 Thread.Sleep(1000);
                 Console.Clear();
+                HasBeenSolved = true;
                 puzzleCount++;
                 return true;
             }

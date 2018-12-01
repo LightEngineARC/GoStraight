@@ -64,8 +64,8 @@ namespace GoStraight
             while ((keyInfo = Console.ReadKey(true)).Key != ConsoleKey.Escape)
             {
                 // cycle through puzzles in this maze:
-                Puzzle[] currentPuzzle = puzzlesInThisMaze.Where((x) => x.PuzzleLocation.Equals(PlayerSpace)).ToArray();
-                if (currentPuzzle.Length != 0)  // if the IEnumerable is not empty and thus the player occupies the space of a Puzzle
+                Puzzle[] currentPuzzle = puzzlesInThisMaze.Where((x) => (!x.HasBeenSolved && x.PuzzleLocation.Equals(PlayerSpace))).ToArray();
+                if (currentPuzzle.Length != 0 && !(currentPuzzle[0].HasBeenSolved))  // if the IEnumerable is not empty and thus the player occupies the space of a Puzzle
                 {
                     if (currentPuzzle[0].RunPuzzle())  // if the player answers the puzzle successfully
                     {
