@@ -176,7 +176,6 @@ namespace GoStraight
             if (CanMove(newPlayer, active))
             {
                 CountSteps++;
-
                 //write over the old player's position
                 RemoveOldPlayer(active);
                 
