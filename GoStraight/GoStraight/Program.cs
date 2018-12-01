@@ -14,90 +14,98 @@ namespace GoStraight
         private static int CountSteps = -1;
         private static string saveBoard = "savedboard";
         private static string loadboard;
+        private static bool isEscaped = false;
+        private static bool isGameOver = false;
 
         static void Main(string[] args)
         {
-            
-            try
+            while (true)
             {
-                using (StreamReader sr = new StreamReader(saveBoard + ".txt"))
+
+                try
                 {
-                    loadboard = sr.ReadLine().Trim();
-                }
-            }
-            catch (Exception e)
-            {
-                Console.SetCursorPosition(44, 15);
-                Console.WriteLine("The saveboard could not be read:");
-                Console.WriteLine(e.Message);
-            }
-            Board ACTIVE_BOARD = new Board(loadboard);
-            InitGame(ACTIVE_BOARD);
-            Console.CursorVisible = false;
-            // Console.WriteLine(ACTIVE_BOARD.GetCoordinate(0,0)); //shows if there is a wall at coordinate
-            ConsoleKeyInfo keyInfo;
-            ACTIVE_BOARD.PrintBoard();
-            MovePlayer(Board.StartPositionX, Board.StartPositionY -4, ACTIVE_BOARD);
-            bool isMazeDone = false;
-            while ((keyInfo = Console.ReadKey(true)).Key != ConsoleKey.Escape)
-            {
-                if(PlayerSpace.X == 40 && PlayerSpace.Y == 10)
-                {
-                    Puzzle.MultiplePuzzle();
-                    if(Puzzle.isFail == true)
+                    using (StreamReader sr = new StreamReader(saveBoard + ".txt"))
                     {
-                        Console.Clear();
-                        Console.WriteLine("GAME OVER");
-                        return;
-                    }
-                    else
-                    {
-                        Main(new string[1]);
+                        loadboard = sr.ReadLine().Trim();
+                        if (Board.EndPositionX == PlayerSpace.X && Board.EndPositionY == PlayerSpace.Y)
+                        {
+                            loadboard = sr.ReadLine().Trim();
+                        } 
                     }
                 }
-                if(PlayerSpace.X == 41 && PlayerSpace.Y == 10)
+                catch (Exception e)
                 {
-                    isMazeDone = true;
+                    Console.SetCursorPosition(44, 15);
+                    Console.WriteLine("The saveboard could not be read:");
+                    Console.WriteLine(e.Message);
                 }
-                //Puzzle.MultiplePuzzle(PlayerSpace.X-21, PlayerSpace.Y-5);
-                switch (keyInfo.Key)
+                Board ACTIVE_BOARD = new Board(loadboard);
+                InitGame(ACTIVE_BOARD);
+                Console.CursorVisible = false;
+                // Console.WriteLine(ACTIVE_BOARD.GetCoordinate(0,0)); //shows if there is a wall at coordinate
+                ConsoleKeyInfo keyInfo;
+                ACTIVE_BOARD.PrintBoard();
+                MovePlayer(Board.StartPositionX, Board.StartPositionY - 4, ACTIVE_BOARD);
+                bool isPuzzleDone = false;
+                while ((keyInfo = Console.ReadKey(true)).Key != ConsoleKey.Escape)
                 {
-                    case ConsoleKey.UpArrow:
-                        MovePlayer(0, -1,ACTIVE_BOARD);
-                        break;
+                    if (PlayerSpace.X == 40 && PlayerSpace.Y == 10)
+                    {
+                        Puzzle.MultiplePuzzle();
+                        if (Puzzle.isFail == true)
+                        {
+                            Console.Clear();
+                            Console.WriteLine("GAME OVER");
+                            return;
+                        }
+                        else
+                        {
+                            Main(new string[1]);
+                        }
+                    }
+                    if (PlayerSpace.X == 41 && PlayerSpace.Y == 10)
+                    {
+                        isPuzzleDone = true;
+                    }
+                    //Puzzle.MultiplePuzzle(PlayerSpace.X-21, PlayerSpace.Y-5);
+                    switch (keyInfo.Key)
+                    {
+                        case ConsoleKey.UpArrow:
+                            MovePlayer(0, -1, ACTIVE_BOARD);
+                            break;
 
-                    case ConsoleKey.RightArrow:
-                        MovePlayer(1, 0,ACTIVE_BOARD);
-                        break;
+                        case ConsoleKey.RightArrow:
+                            MovePlayer(1, 0, ACTIVE_BOARD);
+                            break;
 
-                    case ConsoleKey.DownArrow:
-                        MovePlayer(0, 1,ACTIVE_BOARD);
-                        break;
+                        case ConsoleKey.DownArrow:
+                            MovePlayer(0, 1, ACTIVE_BOARD);
+                            break;
 
-                    case ConsoleKey.LeftArrow:
-                        MovePlayer(-1, 0,ACTIVE_BOARD);
-                        break;
-                    case ConsoleKey.S:
+                        case ConsoleKey.LeftArrow:
+                            MovePlayer(-1, 0, ACTIVE_BOARD);
+                            break;
+                        case ConsoleKey.S:
 
-                        UpdateLoadBoard();
-                        Board.Save(PlayerSpace.X,PlayerSpace.Y,loadboard);
-                        Console.BackgroundColor = ConsoleColor.Black;
-                        return;
-                    case ConsoleKey.Q:
-                        Console.BackgroundColor = ConsoleColor.Black;
-                        Console.Clear();
-                        return;
+                            UpdateLoadBoard();
+                            Board.Save(PlayerSpace.X, PlayerSpace.Y, loadboard);
+                            Console.BackgroundColor = ConsoleColor.Black;
+                            return;
+                        case ConsoleKey.Q:
+                            Console.BackgroundColor = ConsoleColor.Black;
+                            Console.Clear();
+                            return;
+                    }
                 }
+                //TODO add end game stuff here.
             }
-            //TODO add end game stuff here.
-
         }
 
         /// <summary>
         /// Paint the new player
         /// </summary>
         /// <author>Ashton</author>
-        static void MovePlayer(int x, int y,Board active)
+        static void MovePlayer(int x, int y, Board active)
         {
             Coordinate newPlayer = new Coordinate()
             {
@@ -109,7 +117,7 @@ namespace GoStraight
             {
                 CountSteps++;
                 RemoveOldPlayer(active);
-                
+
 
                 //Console.BackgroundColor = PLAYERCOLOR;
                 Console.SetCursorPosition(newPlayer.X, newPlayer.Y);
@@ -120,11 +128,10 @@ namespace GoStraight
                 PlayerSpace = newPlayer;
                 Console.BackgroundColor = ConsoleColor.DarkCyan;
                 Console.SetCursorPosition(14, 12);
-              //Console.Write(Console.CursorLeft + "," + (Console.CursorTop) + " ");
                 Console.Write((PlayerSpace.X) + "," + (PlayerSpace.Y) + " ");
                 Console.SetCursorPosition(90, 9);
                 Console.Write(Puzzle.puzzleCount);
-                Console.SetCursorPosition(PlayerSpace.X,PlayerSpace.Y);
+                Console.SetCursorPosition(PlayerSpace.X, PlayerSpace.Y);
                 Console.SetCursorPosition(80, 7);
                 Console.Write(CountSteps);
             }
@@ -148,14 +155,14 @@ namespace GoStraight
         /// <author>Ashton</author>
         static bool CanMove(Coordinate c, Board active)
         {
-            if (c.X < 21 || c.X >= Console.WindowWidth-21)
+            if (c.X < 21 || c.X >= Console.WindowWidth - 21)
                 return false;
 
             if (c.Y < 5 || c.Y >= Console.WindowHeight)
                 return false;
 
             //check map for the walls or blocks that can not be crossed.
-            if (active.GetCoordinate(c.X-21,c.Y-5))//coordinates inside the allowed maze block
+            if (active.GetCoordinate(c.X - 21, c.Y - 5))//coordinates inside the allowed maze block
             {
                 return false;
             }
@@ -189,11 +196,12 @@ namespace GoStraight
                     X = 0,
                     Y = 4
                 };
-            } else
+            }
+            else
             {
                 PlayerSpace.X++;
             }
-            MovePlayer(0, 0,active);
+            MovePlayer(0, 0, active);
 
         }
 
@@ -206,6 +214,26 @@ namespace GoStraight
             using (StreamWriter writer = new StreamWriter(saveBoard + ".txt"))
             {
                 writer.Write(loadboard);
+            }
+        }
+
+        static void Escape(string s, int x, int y)
+        {
+            if (s.Equals("Maze"))
+            {
+                if (x == 69 && y == 28)
+                {
+                    isEscaped = true;
+                }
+                else isEscaped = false;
+            }
+            else if (s.Equals("StartBoard"))
+            {
+                if (x == 54 && y == 24)
+                {
+                    isEscaped = true;
+                }
+                else isEscaped = false;
             }
         }
     }

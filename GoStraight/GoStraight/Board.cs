@@ -17,6 +17,8 @@ namespace GoStraight
         private int Width;
         public static int StartPositionX { get; private set; }
         public static int StartPositionY { get; private set; }
+        public static int EndPositionX { get; private set; }
+        public static int EndPositionY { get; private set; }
         //TODO add these to mazes
         private int NumberLinked = 0;
         private IList<string> LinkedBoards = new List<string>();
@@ -104,6 +106,10 @@ namespace GoStraight
                     StartPositionX = int.Parse(line.Trim());
                     line = sr.ReadLine();
                     StartPositionY = int.Parse(line.Trim());
+                    line = sr.ReadLine();
+                    EndPositionX = int.Parse(line.Trim());
+                    line = sr.ReadLine();
+                    EndPositionY = int.Parse(line.Trim());
                     //set path color to first line
                     line = sr.ReadLine();
                     PathColor = (ConsoleColor)Enum.Parse(typeof(ConsoleColor), line);
