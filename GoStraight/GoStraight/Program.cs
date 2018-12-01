@@ -26,6 +26,7 @@ namespace GoStraight
                 {
                     using (StreamReader sr = new StreamReader(saveBoard + ".txt"))
                     {
+
                         loadboard = sr.ReadLine().Trim();
                         if (Board.EndPositionX == PlayerSpace.X && Board.EndPositionY == PlayerSpace.Y)
                         {
@@ -96,6 +97,12 @@ namespace GoStraight
                             Console.Clear();
                             return;
                     }
+                    if(PlayerSpace.X == 54 && PlayerSpace.Y == 24)
+                    {
+                        Board newActiveBoard = new Board("Maze");
+                        Console.Clear();
+                        newActiveBoard.PrintBoard();
+                    }
                 }
                 //TODO add end game stuff here.
             }
@@ -128,6 +135,7 @@ namespace GoStraight
                 PlayerSpace = newPlayer;
                 Console.BackgroundColor = ConsoleColor.DarkCyan;
                 Console.SetCursorPosition(14, 12);
+                //Console.Write(Console.CursorLeft + "," + (Console.CursorTop) + " ");
                 Console.Write((PlayerSpace.X) + "," + (PlayerSpace.Y) + " ");
                 Console.SetCursorPosition(90, 9);
                 Console.Write(Puzzle.puzzleCount);
