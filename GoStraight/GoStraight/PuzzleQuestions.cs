@@ -44,8 +44,8 @@ namespace GoStraight
             // puzzles for Kmaze
             Coordinate coordinate3 = new Coordinate
             {
-                X = 69,
-                Y = 7
+                X = 48,
+                Y = 9
             };
             Puzzle puzzle3 = new Puzzle(mazeFileName[3], coordinate3, true,
                 $"What is ({number1} + {number1}) * {number2}?",
@@ -68,8 +68,8 @@ namespace GoStraight
             // puzzles for MyMaze
             Coordinate coordinate5 = new Coordinate
             {
-                X = 26,
-                Y = 6
+                X = 24,
+                Y = 11
             };
             Puzzle puzzle5 = new Puzzle(mazeFileName[4], coordinate3, true,
                 "What hired killer never goes to jail?" +
@@ -87,12 +87,14 @@ namespace GoStraight
                 $"What is {number1} + {number1}?",
                 ((number1 + number1).ToString()));
 
+
+            // for jaesmaze
             Coordinate coordinate7 = new Coordinate
             {
-                X = 46,
-                Y = 9
+                X = 47,
+                Y = 12
             };
-            Puzzle puzzle7 = new Puzzle(mazeFileName[0], coordinate3, true,
+            Puzzle puzzle7 = new Puzzle(mazeFileName[4], coordinate3, true,
                 "What can't be burned in fire, nor drowned in water?" +
                 "\na. ice\n" +
                 "b. paper\n" +
@@ -101,10 +103,10 @@ namespace GoStraight
 
             Coordinate coordinate8 = new Coordinate
             {
-                X = 25,
-                Y = 40
+                X = 29,
+                Y = 21
             };
-            Puzzle puzzle8 = new Puzzle(mazeFileName[0], coordinate3, false,
+            Puzzle puzzle8 = new Puzzle(mazeFileName[4], coordinate3, false,
                 $"What is ({number2} * {number4}) + ({number3} * {number5})",
                 (((number2 * number4) + (number3 * number5)).ToString()));
 

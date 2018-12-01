@@ -16,6 +16,8 @@ namespace GoStraight
         private static string loadboard;
         private static Board ACTIVE_BOARD;
 
+        static Puzzle[] puzzlesInThisMaze;
+
         private static Random rand = new Random();
 
         static void Main(string[] args)
@@ -70,7 +72,7 @@ namespace GoStraight
             Puzzle[] puzzles = PuzzleQuestions.PuzzleArray();
 
             //array with just the Puzzles for the active maze.
-            Puzzle[] puzzlesInThisMaze = puzzles.Where((x) => x.Maze.Equals(loadboard)).ToArray();
+            puzzlesInThisMaze = puzzles.Where((x) => x.Maze.Equals(loadboard)).ToArray();
 
             //print tiles for visible puzzles
             int xAdj = 0; //21;
@@ -187,7 +189,9 @@ namespace GoStraight
                 {
                     //TODO load new board
                     loadboard = active.getLinkedBoard(newPlayer);
+
                     ACTIVE_BOARD = new Board(loadboard);
+                    puzzlesInThisMaze = PuzzleQuestions.PuzzleArray().Where((s) => s.Maze.Equals(loadboard)).ToArray();
                     Board blank = new Board("BlankMaze");
                     blank.PrintBoard();
                     ACTIVE_BOARD.PrintBoard();
