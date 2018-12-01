@@ -8,7 +8,7 @@ using System.Threading;
 
 namespace GoStraight
 {
-    public class Board
+    class Board
     {
 
         private ConsoleColor PathColor;
@@ -23,6 +23,14 @@ namespace GoStraight
         private IList<Coordinate> LinkCoordinates = new List<Coordinate>();
         private bool[,] board = new bool[50, 25];//Matthew
 
+        public bool CheckCoordinate(Coordinate c)
+        {
+            return LinkCoordinates.Contains(c);
+        }
+        public string getLinkedBoard(Coordinate c)
+        {
+            return (string)LinkedBoards[LinkCoordinates.IndexOf(c)];
+        }
 
         public static void Outline()//Jae and Matthew
         {
@@ -117,13 +125,17 @@ namespace GoStraight
                     //Read in the coords of the exits to the linked boards
                     for (int i2 = 0; i2<NumberLinked; i2++)
                     {
-                        x = int.Parse(sr.ReadLine().Trim());
-                        y = int.Parse(sr.ReadLine().Trim());
+                        line = sr.ReadLine();
+                        x = int.Parse(line.Trim());
+                        line = sr.ReadLine();
+                        y = int.Parse(line.Trim());
+
                         newPlayer = new Coordinate()
                         {
                             X = x,
                             Y = y
                         };
+
                         LinkCoordinates.Add(newPlayer);
                     }
 
@@ -158,7 +170,7 @@ namespace GoStraight
             }
             catch (Exception e)
             {
-                Console.WriteLine("The file could not be read:");
+                Console.WriteLine("The file cound not be read:");
                 Console.WriteLine(e.Message);
             }
         }
@@ -241,16 +253,18 @@ namespace GoStraight
         {
             string maze = fileName;
             string[] oldMaze = File.ReadAllLines(maze+".txt");
+
             using (StreamWriter writer = new StreamWriter(fileName +".txt"))
             {
                 for (int i = 0; i < oldMaze.Length; i++)
                 {
-                    if (i == 2) { writer.WriteLine(x); }
-                    else if (i == 3) { writer.WriteLine(y); }
+                    if (i == 6) { writer.WriteLine(x); }//line to write position of x coord
+                    else if (i == 7) { writer.WriteLine(y); }//line to write position of y coord
                     else if (i == oldMaze.Length-1) writer.Write(oldMaze[i]);
                     else writer.WriteLine(oldMaze[i]);
                 }
             }
+
             Console.BackgroundColor = ConsoleColor.Black;
             Console.Clear();
             Console.WriteLine("Save Complete!");

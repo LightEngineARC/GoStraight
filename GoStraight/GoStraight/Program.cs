@@ -12,6 +12,7 @@ namespace GoStraight
         private static int CountSteps = -1;
         private static string saveBoard = "savedboard";
         private static string loadboard;
+        private static Board ACTIVE_BOARD;
 
         private static Random rand = new Random();
 
@@ -32,7 +33,7 @@ namespace GoStraight
                 Console.WriteLine("The saveboard could not be read:");
                 Console.WriteLine(e.Message);
             }
-            Board ACTIVE_BOARD = new Board(loadboard);
+            ACTIVE_BOARD = new Board(loadboard);
 //            Console.SetBufferSize(1000, 1000);  // Just for Matt's computer. Everyone else can comment this out
 
             InitGame(ACTIVE_BOARD);
@@ -174,30 +175,46 @@ namespace GoStraight
 
             if (CanMove(newPlayer, active))
             {
-                CountSteps++;
-                //write over the old player's position
-                RemoveOldPlayer(active);
-                
-                // print player in new position
-                //Console.BackgroundColor = PLAYERCOLOR;
-                Console.SetCursorPosition(newPlayer.X, newPlayer.Y);
-                Console.Write('X');
-                // increase the counter for the number of steps the player has taken
-                CountSteps++;
-                // set the player's position to the new position
-                PlayerSpace = newPlayer;
+                if (active.CheckCoordinate(newPlayer))
+                {
+                    //TODO load new board
+                    loadboard = active.getLinkedBoard(newPlayer);
+                    ACTIVE_BOARD = new Board(loadboard);
+                    ACTIVE_BOARD.PrintBoard();
+                    newPlayer = new Coordinate
+                    {
+                        X = Board.StartPositionX,
+                        Y = Board.StartPositionY
+                    };
+                    PlayerSpace = newPlayer;
+                    MovePlayer(0, 0, ACTIVE_BOARD);
+                }else
+                {
+                    CountSteps++;
+                    //write over the old player's position
+                    RemoveOldPlayer(active);
 
-                // Update numbers in display
-                Console.BackgroundColor = ConsoleColor.DarkCyan;
-                Console.SetCursorPosition(14, 12);
+                    // print player in new position
+                    //Console.BackgroundColor = PLAYERCOLOR;
+                    Console.SetCursorPosition(newPlayer.X, newPlayer.Y);
+                    Console.Write('X');
+                    // increase the counter for the number of steps the player has taken
+                    CountSteps++;
+                    // set the player's position to the new position
+                    PlayerSpace = newPlayer;
 
-                //Console.Write(Console.CursorLeft + "," + (Console.CursorTop) + " ");
-                Console.Write((PlayerSpace.X) + "," + (PlayerSpace.Y) + " ");
-                Console.SetCursorPosition(90, 9);
-                Console.Write(Puzzle.puzzleCount);
-                Console.SetCursorPosition(PlayerSpace.X,PlayerSpace.Y);
-                Console.SetCursorPosition(80, 7);
-                Console.Write(CountSteps);
+                    // Update numbers in display
+                    Console.BackgroundColor = ConsoleColor.DarkCyan;
+                    Console.SetCursorPosition(14, 12);
+
+                    //Console.Write(Console.CursorLeft + "," + (Console.CursorTop) + " ");
+                    Console.Write((PlayerSpace.X) + "," + (PlayerSpace.Y) + " ");
+                    Console.SetCursorPosition(90, 9);
+                    Console.Write(Puzzle.puzzleCount);
+                    Console.SetCursorPosition(PlayerSpace.X, PlayerSpace.Y);
+                    Console.SetCursorPosition(80, 7);
+                    Console.Write(CountSteps);
+                }
             }
         }
 
