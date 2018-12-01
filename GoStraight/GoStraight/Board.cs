@@ -10,8 +10,22 @@ namespace GoStraight
 {
     public class Board
     {
+
+        private ConsoleColor PathColor;
+        private ConsoleColor WallColor;
+        private int Height;
+        private int Width;
+        public static int StartPositionX { get; private set; }
+        public static int StartPositionY { get; private set; }
+        //TODO add these to mazes
+        private int NumberLinked = 0;
+        private IList<string> LinkedBoards = new List<string>();
+        private bool[,] board = new bool[50, 25];//Matthew
+
+
         public static void Outline()//Jae and Matthew
         {
+
             //TODO set background for this position top 0 bottom 4 left 0 right (95?)
             Console.SetCursorPosition(21, 0);
             Console.BackgroundColor = ConsoleColor.DarkCyan;
@@ -69,16 +83,6 @@ namespace GoStraight
             Console.WriteLine("Puzzles Solved: ");
         }
 
-        private ConsoleColor PathColor;
-        private ConsoleColor WallColor;
-        private int Height;
-        private int Width;
-        public static int StartPositionX { get; private set; }
-        public static int StartPositionY { get; private set; }
-        //TODO add these to mazes
-        private int NumberLinked = 0;
-        private IList<string> LinkedBoards = new List<string>();
-        private bool[,] board = new bool[50, 25];//Matthew
 
         /// <summary>
         /// Constructor builds board from filename

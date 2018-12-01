@@ -9,14 +9,9 @@ namespace GoStraight
 {
     class Program
     {
-        
-        //const ConsoleColor PLAYERCOLOR = ConsoleColor.DarkBlue;
-        //const ConsoleColor BACKGROUND_COLOR = ConsoleColor.Green;
-
         public static Coordinate PlayerSpace { get; set; } //Will represent our player that's moving around
 
         private static int CountSteps = -1;
-
         private static string saveBoard = "savedboard";
         private static string loadboard;
 
