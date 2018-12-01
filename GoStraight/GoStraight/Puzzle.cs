@@ -87,31 +87,41 @@ namespace GoStraight
         public Boolean RunPuzzle()
         {
             // setup for the question
-            Console.Clear();
+            //Console.Clear();
             Console.BackgroundColor = ConsoleColor.Black;
-
+            (new Board("BlankMaze")).PrintBoard();   //clears the area for the question to appear
+            Console.ReadKey();  //clears the reader so that the next input line is empty (IMPORTANT!)
+ 
             // beggining of first question:
+            Console.SetCursorPosition(21, 5);
             Console.WriteLine(Question);
+            Console.SetCursorPosition(21, 6);
             Console.Write("Your Answer: ");
             string reply = Console.ReadLine(); 
 
             if (!MatchesAnswer(reply))  // player answers wrong: gane over
             {
+                Console.SetCursorPosition(21, 7);
                 Console.WriteLine("You faild to solve the answer!");
                 Thread.Sleep(2000);
                 Console.Clear();
                 //isFail = true;
                 Console.WriteLine("GAME OVER!");
+                //reply = "";
+                //Console.ReadKey();
                 return false;
             }
 
-            else  //player answers the first question right
+            else  //player answers right
             {
+                Console.SetCursorPosition(21, 7);
                 Console.WriteLine("Okay, Let's Continue!");
                 Thread.Sleep(1000);
                 Console.Clear();
                 HasBeenSolved = true;
                 puzzleCount++;
+                //Console.ReadLine();
+                //reply = "";
                 return true;
             }
 
