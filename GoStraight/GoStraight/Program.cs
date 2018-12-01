@@ -53,7 +53,6 @@ namespace GoStraight
             int p = rand.Next(1, 10);
             int q = rand.Next(1, 10);
             Puzzle jaesPuzzle1 = new Puzzle(loadboard, coordinate1, true, $"What is {p} * {q}?", (p * q).ToString());
-            //Puzzle jaesPuzzle1 = new Puzzle(loadboard, coordinate1, true, $"The answer is d", "d");
 
             Coordinate coordinate2 = new Coordinate
             {
@@ -63,7 +62,6 @@ namespace GoStraight
             Puzzle jaesPuzzle2 = new Puzzle(loadboard, coordinate2, false, "What is Sin(pi) * Cos(0)?", "0");
 
             Puzzle[] puzzles = new Puzzle[] { jaesPuzzle1, jaesPuzzle2 }; // in final, will be replaced with list of all puzzles in all mazes
-            //Puzzle[] puzzles = new Puzzle[] { jaesPuzzle2, jaesPuzzle1 }; // in final, will be replaced with list of all puzzles in all mazes
 
             //array with just the Puzzles for the active maze.
             Puzzle[] puzzlesInThisMaze = puzzles.Where((x) => x.Maze.Equals(loadboard)).ToArray();
@@ -84,13 +82,11 @@ namespace GoStraight
                 {
                     if (currentPuzzle[0].RunPuzzle())  // if the player answers the puzzle successfully
                     {
-                        Console.BackgroundColor = ConsoleColor.Black;
                         ACTIVE_BOARD.PrintBoard();
                         PrintPuzzle(puzzlesInThisMaze, xAdj, yAdj);
                     }
                     else  //if the player gets the answer wrong
                     {
-                        Console.BackgroundColor = ConsoleColor.Black;
                         return;
                     }
                 }
@@ -153,7 +149,6 @@ namespace GoStraight
         private static void PrintPuzzle(Puzzle[] puzzlesInThisMaze, int xAdj, int yAdj)
         {
             Console.OutputEncoding = System.Text.Encoding.UTF8;
-            Console.BackgroundColor = ConsoleColor.Black;
             puzzlesInThisMaze.Where((x) => !x.IsTrap)  // prints tiles for Puzzles that are visible
                 .ToList()
                 .ForEach(x =>
@@ -192,8 +187,7 @@ namespace GoStraight
                         Y = Board.StartPositionY
                     };
                     PlayerSpace = newPlayer;
-                    MovePlayer(1, 0, ACTIVE_BOARD);
-
+                    MovePlayer(0, 0, ACTIVE_BOARD);
                 }else
                 {
                     CountSteps++;
