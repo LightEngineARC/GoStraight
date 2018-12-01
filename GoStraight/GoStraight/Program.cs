@@ -46,6 +46,7 @@ namespace GoStraight
             MovePlayer(Board.StartPositionX, Board.StartPositionY - 4, ACTIVE_BOARD);
             bool isMazeDone = false;
 
+            /*
             // create puzzle to call
             Coordinate coordinate1 = new Coordinate
             {
@@ -63,9 +64,10 @@ namespace GoStraight
                 Y = 13
             };
             Puzzle jaesPuzzle2 = new Puzzle(loadboard, coordinate2, false, "What is Sin(pi) * Cos(0)?", "0");
+            */
 
-            Puzzle[] puzzles = new Puzzle[] { jaesPuzzle1, jaesPuzzle2 }; // in final, will be replaced with list of all puzzles in all mazes
-            //Puzzle[] puzzles = new Puzzle[] { jaesPuzzle2, jaesPuzzle1 }; // in final, will be replaced with list of all puzzles in all mazes
+            //Puzzle[] puzzles = new Puzzle[] { jaesPuzzle1, jaesPuzzle2 }; // in final, will be replaced with list of all puzzles in all mazes
+            Puzzle[] puzzles = PuzzleQuestions.PuzzleArray();
 
             //array with just the Puzzles for the active maze.
             Puzzle[] puzzlesInThisMaze = puzzles.Where((x) => x.Maze.Equals(loadboard)).ToArray();
