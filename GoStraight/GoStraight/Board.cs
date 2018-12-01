@@ -101,6 +101,7 @@ namespace GoStraight
                     Width = int.Parse(line.Trim());
                     line = sr.ReadLine();
                     Height = int.Parse(line.Trim());
+                    line = sr.ReadLine();
                     NumberLinked = int.Parse(line.Trim());
 
                     //Read in NumberLinked number of strings for the linked boards
@@ -111,13 +112,14 @@ namespace GoStraight
                     }
                     int x;
                     int y;
+                    Coordinate newPlayer;
 
                     //Read in the coords of the exits to the linked boards
                     for (int i2 = 0; i2<NumberLinked; i2++)
                     {
                         x = int.Parse(sr.ReadLine().Trim());
                         y = int.Parse(sr.ReadLine().Trim());
-                        Coordinate newPlayer = new Coordinate()
+                        newPlayer = new Coordinate()
                         {
                             X = x,
                             Y = y

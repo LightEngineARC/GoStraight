@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace GoStraight
 {
@@ -159,6 +157,7 @@ namespace GoStraight
                     Console.Write(Puzzle.PuzzleDisplay);
                 });
             Console.ForegroundColor = ConsoleColor.White;//TODO set dynamically based on active board
+
         }
 
         /// <summary>
@@ -244,7 +243,7 @@ namespace GoStraight
             Console.BackgroundColor = active.GetPathColor();
             Console.Clear();
         }
-
+    
         /// <summary>
         /// Initiates the game by painting the background
         /// and initiating the player
