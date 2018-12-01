@@ -19,6 +19,7 @@ namespace GoStraight
 
         static void Main(string[] args)
         {
+            //Console.SetBufferSize(1000, 1000);  // Just for Matt's computer. Everyone else can comment this out
             String mazeFileName = "Maze";
 
             Board ACTIVE_BOARD = new Board(mazeFileName);
