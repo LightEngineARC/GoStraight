@@ -1,5 +1,9 @@
 ﻿50
 25
+1
+MyMaze
+67
+26
 22
 6
 DarkBlue

@@ -1,7 +1,14 @@
 50
 25
+2
+MyMaze
+HallwayDiamond
 45
 5
+45
+29
+45
+29
 Blue
 DarkRed
 true ,true ,true ,true ,true ,true ,true ,true ,true ,true ,true ,true ,true ,true ,true ,true ,true ,true ,true ,true ,true ,true ,true ,true ,true 

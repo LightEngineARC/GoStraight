@@ -101,8 +101,11 @@
     <Content Include="MyMaze.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="savedboard.txt">
+    <Content Include="MyMazeExpanded.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="savedboard.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="StartBoard.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

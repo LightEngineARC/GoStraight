@@ -1,5 +1,12 @@
 50
 25
+2
+MazeKW
+HallwayDiamond
+70
+17
+21
+17
 21
 17
 Blue

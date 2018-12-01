@@ -1,5 +1,12 @@
 50
 25
+2
+KMaze
+HallwayDiamond
+70
+16
+21
+6
 21
 6
 Blue

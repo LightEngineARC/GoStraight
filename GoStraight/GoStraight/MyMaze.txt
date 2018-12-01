@@ -1,5 +1,12 @@
+50
 25
-25
+2
+Maze
+HallwayVertical
+26
+10
+26
+6
 26
 6
 DarkBlue
