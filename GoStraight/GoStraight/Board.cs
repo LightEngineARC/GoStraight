@@ -73,8 +73,8 @@ namespace GoStraight
         private ConsoleColor WallColor;
         private int Height;
         private int Width;
-        public static int StartPositionX { get; private set; }
-        public static int StartPositionY { get; private set; }
+        public static int StartPositionX { get; set; }
+        public static int StartPositionY { get; set; }
         //TODO add these to mazes
         private int NumberLinked = 0;
         private IList<string> LinkedBoards = new List<string>();

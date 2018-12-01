@@ -20,7 +20,7 @@ namespace GoStraight
         static void Main(string[] args)
         {
             Console.SetBufferSize(1000, 1000);  // Just for Matt's computer. Everyone else can comment this out
-            String mazeFileName = "MyMaze";
+            String mazeFileName = "Maze";
 
             Board ACTIVE_BOARD = new Board(mazeFileName);
             InitGame(ACTIVE_BOARD);
@@ -44,7 +44,7 @@ namespace GoStraight
             Coordinate coordinate2 = new Coordinate
             {
                 X = 46,
-                Y = 13 
+                Y = 13
             };
             Puzzle jaesPuzzle2 = new Puzzle(mazeFileName, coordinate2, false, "What is Sin(pi) * Cos(0)?", "0");
 
@@ -59,17 +59,7 @@ namespace GoStraight
 
             //Puzzle[] visiblePuzzles = puzzlesInThisMaze.Where((x) => !x.IsTrap).ToArray();
 
-            Console.OutputEncoding = System.Text.Encoding.UTF8;
-            puzzlesInThisMaze.Where((x) => !x.IsTrap)  // prints tiles for Puzzles that are visible
-                .ToList()
-                .ForEach(x =>
-                    {
-                        Console.SetCursorPosition(xAdj + x.PuzzleLocation.X, yAdj + x.PuzzleLocation.Y);
-                        Console.ForegroundColor = ConsoleColor.Red;
-                        Console.Write(Puzzle.PuzzleDisplay);
-                    });
-            Console.ForegroundColor = ConsoleColor.White;
-
+            PrintPuzzle(puzzlesInThisMaze, xAdj, yAdj);
 
             while ((keyInfo = Console.ReadKey(true)).Key != ConsoleKey.Escape)
             {
@@ -79,13 +69,15 @@ namespace GoStraight
                 {
                     if (currentPuzzle[0].RunPuzzle())  // if the player answers the puzzle successfully
                     {
-                        Main(new string[0]);
+                        ACTIVE_BOARD.PrintBoard();
+                        PrintPuzzle(puzzlesInThisMaze, xAdj, yAdj);
                     }
                     else  //if the player gets the answer wrong
                     {
                         return;
                     }
                 }
+                
 
                 /*
                 if (PlayerSpace.Equals(jaesPuzzle1.PuzzleLocation)) // if the player's position equals the position of the trap/puzzle
@@ -102,7 +94,7 @@ namespace GoStraight
                     }
                 }
                 */
-                if(PlayerSpace.X == 41 && PlayerSpace.Y == 10)
+                if (PlayerSpace.X == 41 && PlayerSpace.Y == 10)
                 {
                     isMazeDone = true;
                     //Console.WriteLine("Congradulations, you won!");
@@ -137,6 +129,20 @@ namespace GoStraight
             }
             //TODO add end game stuff here.
 
+        }
+
+        private static void PrintPuzzle(Puzzle[] puzzlesInThisMaze, int xAdj, int yAdj)
+        {
+            Console.OutputEncoding = System.Text.Encoding.UTF8;
+            puzzlesInThisMaze.Where((x) => !x.IsTrap)  // prints tiles for Puzzles that are visible
+                .ToList()
+                .ForEach(x =>
+                {
+                    Console.SetCursorPosition(xAdj + x.PuzzleLocation.X, yAdj + x.PuzzleLocation.Y);
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.Write(Puzzle.PuzzleDisplay);
+                });
+            Console.ForegroundColor = ConsoleColor.White;
         }
 
         /// <summary>
