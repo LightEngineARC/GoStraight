@@ -90,7 +90,7 @@ namespace GoStraight
             Console.WriteLine("");
             Console.SetCursorPosition(74, 7);
             Console.WriteLine("Step: ");
-            
+
             Console.SetCursorPosition(74, 9);
             Console.WriteLine("Puzzles Solved: ");
         }
@@ -116,7 +116,7 @@ namespace GoStraight
                     NumberLinked = int.Parse(line.Trim());
 
                     //Read in NumberLinked number of strings for the linked boards
-                    for (int index=0; index< NumberLinked; index++)
+                    for (int index = 0; index < NumberLinked; index++)
                     {
                         line = sr.ReadLine();
                         LinkedBoards.Add(line.Trim());
@@ -126,7 +126,7 @@ namespace GoStraight
                     Coordinate newPlayer;
 
                     //Read in the coords of the exits to the linked boards
-                    for (int i2 = 0; i2<NumberLinked; i2++)
+                    for (int i2 = 0; i2 < NumberLinked; i2++)
                     {
                         line = sr.ReadLine();
                         x = int.Parse(line.Trim());
@@ -153,7 +153,7 @@ namespace GoStraight
                     //set wall color to second line
                     line = sr.ReadLine();
                     WallColor = (ConsoleColor)Enum.Parse(typeof(ConsoleColor), line);
-                    
+
                     //set the maze array to the rest of the lines.
                     line = sr.ReadToEnd();
                     int i = 0, j = 0;
@@ -191,7 +191,7 @@ namespace GoStraight
 
         //    }
         //}
-       
+
         /// <summary>
         /// Helper method to verify the bool array was read correctly
         /// </summary>
@@ -255,18 +255,23 @@ namespace GoStraight
         public static void Save(int x, int y, string fileName)
         {
             string maze = fileName;
-            string[] oldMaze = File.ReadAllLines(maze+".txt");
+            string[] oldMaze = File.ReadAllLines(maze + ".txt");
 
-            using (StreamWriter writer = new StreamWriter(fileName +".txt"))
+            using (StreamWriter writer = new StreamWriter(fileName + ".txt"))
             {
                 for (int i = 0; i < oldMaze.Length; i++)
                 {
                     if (i == 6) { writer.WriteLine(x); }//line to write position of x coord
                     else if (i == 7) { writer.WriteLine(y); }//line to write position of y coord
-                    else if (i == oldMaze.Length-1) writer.Write(oldMaze[i]);
+                    else if (i == oldMaze.Length - 1) writer.Write(oldMaze[i]);
                     else writer.WriteLine(oldMaze[i]);
                 }
             }
+            using (StreamWriter writer = new StreamWriter("savedboard.txt"))
+            {
+                writer.Write(fileName);
+            }
+
 
             Console.BackgroundColor = ConsoleColor.Black;
             Console.Clear();
@@ -278,6 +283,6 @@ namespace GoStraight
         {
             return x;
         }
-}
+    }
 
 }

@@ -16,6 +16,8 @@ namespace GoStraight
         private static string loadboard;
         private static Board ACTIVE_BOARD;
 
+        static Puzzle[] puzzlesInThisMaze;
+
         private static Random rand = new Random();
 
         static void Main(string[] args)
@@ -46,6 +48,7 @@ namespace GoStraight
             MovePlayer(Board.StartPositionX, Board.StartPositionY - 4, ACTIVE_BOARD);
             bool isMazeDone = false;
 
+            /*
             // create puzzle to call
             Coordinate coordinate1 = new Coordinate
             {
@@ -63,12 +66,13 @@ namespace GoStraight
                 Y = 13
             };
             Puzzle jaesPuzzle2 = new Puzzle(loadboard, coordinate2, false, "What is Sin(pi) * Cos(0)?", "0");
+            */
 
-            Puzzle[] puzzles = new Puzzle[] { jaesPuzzle1, jaesPuzzle2 }; // in final, will be replaced with list of all puzzles in all mazes
-            //Puzzle[] puzzles = new Puzzle[] { jaesPuzzle2, jaesPuzzle1 }; // in final, will be replaced with list of all puzzles in all mazes
+            //Puzzle[] puzzles = new Puzzle[] { jaesPuzzle1, jaesPuzzle2 }; // in final, will be replaced with list of all puzzles in all mazes
+            Puzzle[] puzzles = PuzzleQuestions.PuzzleArray();
 
             //array with just the Puzzles for the active maze.
-            Puzzle[] puzzlesInThisMaze = puzzles.Where((x) => x.Maze.Equals(loadboard)).ToArray();
+            puzzlesInThisMaze = puzzles.Where((x) => x.Maze.Equals(loadboard)).ToArray();
 
             //print tiles for visible puzzles
             int xAdj = 0; //21;
@@ -195,7 +199,9 @@ namespace GoStraight
                 {
                     //TODO load new board
                     loadboard = active.getLinkedBoard(newPlayer);
+
                     ACTIVE_BOARD = new Board(loadboard);
+                    puzzlesInThisMaze = PuzzleQuestions.PuzzleArray().Where((s) => s.Maze.Equals(loadboard)).ToArray();
                     Board blank = new Board("BlankMaze");
                     blank.PrintBoard();
                     ACTIVE_BOARD.PrintBoard();
