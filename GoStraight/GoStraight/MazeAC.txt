@@ -10,7 +10,7 @@ HallwayWandering
 50
 15
 Blue
-DarkRed
+Green
 false,true ,false,true ,false,true ,false,true ,false,true ,false,true ,false,true ,false,true ,false,true ,false,true ,false,true ,false,true ,false
 true ,false,true ,false,true ,false,true ,false,true ,false,true ,false,true ,false,true ,false,true ,false,true ,false,true ,false,true ,false,true 
 false,true ,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,true ,false

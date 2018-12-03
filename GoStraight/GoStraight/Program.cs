@@ -154,6 +154,8 @@ namespace GoStraight
 
         private static void CloseGame()
         {
+            Console.ForegroundColor = ConsoleColor.Yellow;
+ 
             Console.BackgroundColor = ConsoleColor.DarkCyan;
             Console.SetCursorPosition(34, 0);
             Console.WriteLine("THANKS FOR PLAYING!");
@@ -328,5 +330,4 @@ namespace GoStraight
             return (X == ((Coordinate)obj).X && Y == ((Coordinate)obj).Y);
         }
     }
-    //TODO use the areas to display text for the players
 }

@@ -67,8 +67,8 @@ namespace GoStraight
             Console.WriteLine("    Save : Press 's'");
             Console.WriteLine("    Quit : Press 'q'");
             Console.WriteLine("    Menu");
-            Console.WriteLine("    Start Position:");
-            Console.WriteLine("              "
+            Console.WriteLine("   Start Position:");
+            Console.WriteLine("            "
                 + StartPositionX + "," + StartPositionY + "");
             Console.WriteLine("--------------------");
             Console.WriteLine("    Player's info");

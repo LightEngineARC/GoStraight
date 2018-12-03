@@ -9,7 +9,7 @@ KMaze
 6
 22
 6
-DarkBlue
+Black
 Cyan
 true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true
 true,false,false,false,false,false,false,false,true,false,false,false,false,false,false,false,false,true,false,true,false,false,false,false,true
