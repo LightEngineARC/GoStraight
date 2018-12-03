@@ -36,7 +36,7 @@ namespace GoStraight
                 Console.WriteLine(e.Message);
             }
             ACTIVE_BOARD = new Board(loadboard);
-//            Console.SetBufferSize(1000, 1000);  // Just for Matt's computer. Everyone else can comment this out
+            //            Console.SetBufferSize(1000, 1000);  // Just for Matt's computer. Everyone else can comment this out
 
             InitGame(ACTIVE_BOARD);
             Console.CursorVisible = false;
@@ -96,7 +96,7 @@ namespace GoStraight
                         return;
                     }
                 }
-                
+
 
                 /*
                 if (PlayerSpace.Equals(jaesPuzzle1.PuzzleLocation)) // if the player's position equals the position of the trap/puzzle
@@ -122,24 +122,24 @@ namespace GoStraight
                 switch (keyInfo.Key)
                 {
                     case ConsoleKey.UpArrow:
-                        MovePlayer(0, -1,ACTIVE_BOARD);
+                        MovePlayer(0, -1, ACTIVE_BOARD);
                         break;
 
                     case ConsoleKey.RightArrow:
-                        MovePlayer(1, 0,ACTIVE_BOARD);
+                        MovePlayer(1, 0, ACTIVE_BOARD);
                         break;
 
                     case ConsoleKey.DownArrow:
-                        MovePlayer(0, 1,ACTIVE_BOARD);
+                        MovePlayer(0, 1, ACTIVE_BOARD);
                         break;
 
                     case ConsoleKey.LeftArrow:
-                        MovePlayer(-1, 0,ACTIVE_BOARD);
+                        MovePlayer(-1, 0, ACTIVE_BOARD);
                         break;
                     case ConsoleKey.S:
 
                         UpdateLoadBoard();
-                        Board.Save(PlayerSpace.X,PlayerSpace.Y,loadboard);
+                        Board.Save(PlayerSpace.X, PlayerSpace.Y, loadboard);
                         Console.BackgroundColor = ConsoleColor.Black;
                         return;
                     case ConsoleKey.Q:
@@ -148,8 +148,16 @@ namespace GoStraight
                         return;
                 }
             }
-            //TODO add end game stuff here.
+            //End game stuff here.
+            CloseGame();
+        }
 
+        private static void CloseGame()
+        {
+            Console.BackgroundColor = ConsoleColor.DarkCyan;
+            Console.SetCursorPosition(34, 0);
+            Console.WriteLine("THANKS FOR PLAYING!");
+            Console.SetCursorPosition(31, 3);
         }
 
         private static void PrintPuzzle(Puzzle[] puzzlesInThisMaze, int xAdj, int yAdj)
@@ -199,7 +207,6 @@ namespace GoStraight
 
                 }else
                 {
-                    CountSteps++;
                     //write over the old player's position
                     RemoveOldPlayer(active);
 

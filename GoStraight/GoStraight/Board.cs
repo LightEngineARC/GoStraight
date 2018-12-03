@@ -44,9 +44,12 @@ namespace GoStraight
                 Console.WriteLine("                                                                                            ");
             }
             Console.SetCursorPosition(35, 1);
+            Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine("Backpack Adventure");
             Console.SetCursorPosition(25, 2);
+            Console.ForegroundColor = ConsoleColor.Cyan;
             Console.WriteLine("A game by Ashton, Jae, Khayman, and Matthew");
+            Console.ForegroundColor = ConsoleColor.Gray;
             GameFunction();
             PlayerInfo();
         }
@@ -66,7 +69,7 @@ namespace GoStraight
             Console.WriteLine("    Menu");
             Console.WriteLine("    Start Position:");
             Console.WriteLine("              "
-                + StartPositionX + "," + StartPositionY + " ");
+                + StartPositionX + "," + StartPositionY + "");
             Console.WriteLine("--------------------");
             Console.WriteLine("    Player's info");
             Console.WriteLine("    Position:"); // maybe we can put some background sounds and make it stop with this
